@@ -9,6 +9,7 @@
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="{{ url('/') }}" class="{{ Request::is('/') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Welcome</a>
                         <a href="{{ url('/register') }}" class="{{ Request::is('register') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Register</a>
+                        <a href="{{ url('/login') }}" class="{{ Request::is('login') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Login</a>
                     </div>
                 </div>
             </div>

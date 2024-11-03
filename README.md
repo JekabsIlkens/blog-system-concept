@@ -57,3 +57,15 @@ php artisan db:seed                 # Seeds the database
 ```
 If you encounter any issues when running the setups scripts,
 try executing these commands manually in the specified order.
+
+## Unit tests & Feature tests
+
+Use this command to run all the unit and feature tests:
+```shell
+php artisan test
+```
+**Note:** running the tests will refresh the database! </br> </br>
+So you will need to manually re-seed it with this command:
+```shell
+php artisan db:seed
+```

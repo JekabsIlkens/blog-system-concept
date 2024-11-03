@@ -26,6 +26,22 @@
                     @endif
                 </div>
             </div>
+            <div class="md:hidden" id="mobile-menu">
+                <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                    <a href="{{ route('welcome.get') }}" class="{{ Request::is('/') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Welcome</a>
+                    @if(Auth::check())
+                        <form action="{{ route('logout.post') }}" method="POST">
+                            @csrf
+                            <button type="submit" class='text-neutral-300 hover:bg-neutral-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'>
+                                Logout
+                            </button>
+                        </form>
+                    @else
+                        <a href="{{ route('register.get') }}" class="{{ Request::is('register') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Register</a>
+                        <a href="{{ route('login.get') }}" class="{{ Request::is('login') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Login</a>
+                    @endif
+                </div>
+            </div>
         </div>
     </div>
 </nav>

@@ -28,8 +28,11 @@
                                 <div>
                                     <label for="email" class="block text-sm/6 font-medium text-neutral-900">Email address</label>
                                     <div class="mt-2">
-                                        <input id="email" name="email" type="email" autocomplete="email" required class="block w-full rounded-md border-0 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-neutral-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6">
+                                        <input id="email" name="email" type="email" value="{{ old('email') }}" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6">
                                     </div>
+                                    @error('email')
+                                        <div class="block text-sm/6 font-medium text-amber-600">{{ $message }}</div>
+                                    @enderror
                                 </div>
                       
                                 <div>
@@ -37,8 +40,11 @@
                                         <label for="password" class="block text-sm/6 font-medium text-neutral-900">Password</label>
                                     </div>
                                     <div class="mt-2">
-                                        <input id="password" name="password" type="password" autocomplete="current-password" required class="block w-full rounded-md border-0 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-neutral-400 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6">
+                                        <input id="password" name="password" type="password" value="{{ old('password') }}" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6">
                                     </div>
+                                    @error('password')
+                                        <div class="block text-sm/6 font-medium text-amber-600">{{ $message }}</div>
+                                    @enderror
                                 </div>
                       
                                 <div>

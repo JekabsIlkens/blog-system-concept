@@ -1,11 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterUserController;
+use App\Http\Controllers\RegisterController;
 
 Route::get('/', function () { return view('welcome'); });
 
-Route::get('/register', [RegisterUserController::class, 'index']);
-Route::post('/register', [RegisterUserController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'showRegistrationPage']);
+Route::post('/register', [RegisterController::class, 'registerUser']);
 
 Route::get('/login', function () { return view('login'); });

@@ -36,6 +36,7 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
+            'email.exists' => 'Provided email does not exist.',
             'password.regex' => 'Must contain at least 1 upper-case letter, 1 digit, 1 symbol.',
         ];
     }

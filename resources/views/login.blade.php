@@ -23,7 +23,7 @@
                         </div>
                       
                         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                            <form class="space-y-6" action="#" method="POST">
+                            <form class="space-y-6" action="{{ route('login.post') }}" method="POST">
                                 @csrf
                                 <div>
                                     <label for="email" class="block text-sm/6 font-medium text-neutral-900">Email address</label>
@@ -45,6 +45,9 @@
                                     @error('password')
                                         <div class="block text-sm/6 font-medium text-amber-600">{{ $message }}</div>
                                     @enderror
+                                    @if ($errors->has('incorrect-password'))
+                                        <div class="block text-sm/6 font-medium text-amber-600">{{ $errors->first('incorrect-password') }}</div>
+                                    @endif
                                 </div>
                       
                                 <div>
@@ -55,7 +58,7 @@
                             </form>
                       
                             <p class="mt-10 text-center text-sm/6 text-neutral-500"> No account?
-                                <a href="{{ url('/register') }}" class="font-semibold text-amber-600 hover:text-amber-500">Create an account</a>
+                                <a href="{{ route('register.get') }}" class="font-semibold text-amber-600 hover:text-amber-500">Create an account</a>
                             </p>
                         </div>
                     </div>

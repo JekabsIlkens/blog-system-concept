@@ -31,8 +31,8 @@
                             @error('password')
                                 <div class="block text-sm/6 font-medium text-amber-600">{{ $message }}</div>
                             @enderror
-                            @if ($errors->has('incorrect-password'))
-                                <div class="block text-sm/6 font-medium text-amber-600">{{ $errors->first('incorrect-password') }}</div>
+                            @if ($errors->has('error'))
+                                <div class="block text-sm/6 font-medium text-amber-600">{{ $errors->first('error') }}</div>
                             @endif
                         </div>
                       

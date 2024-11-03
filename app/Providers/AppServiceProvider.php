@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Http\Interfaces\RegisterServiceInterface;
+use App\Http\Services\RegisterService;
+use App\Http\Interfaces\LoginServiceInterface;
+use App\Http\Services\LoginService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(RegisterServiceInterface::class, RegisterService::class);
+        $this->app->bind(LoginServiceInterface::class, LoginService::class);
     }
 
     /**

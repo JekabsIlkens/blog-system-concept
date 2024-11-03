@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
-use App\Http\Services\RegisterService;
+use App\Http\Interfaces\RegisterServiceInterface;
 
 class RegisterController
 {
     protected $registerService;
 
-    public function __construct(RegisterService $registerService)
+    public function __construct(RegisterServiceInterface $registerService)
     {
         $this->registerService = $registerService;
     }
@@ -21,8 +21,14 @@ class RegisterController
 
     public function registerUser(RegisterRequest $request)
     {
-        $this->registerService->createUser($request->validated());
-
-        return redirect('login');
+        try 
+        {
+            $this->registerService->createUser($request->validated());
+            return redirect()->route('login.get');
+        } 
+        catch (\Exception $e) 
+        {
+            return back()->withErrors(['error' => 'Registration failed, please try again.']);
+        }
     }
 }

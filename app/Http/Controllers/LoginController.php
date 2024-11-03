@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
-use App\Http\Services\LoginService;
+use App\Http\Interfaces\LoginServiceInterface;
 use Illuminate\Validation\ValidationException;
 
 class LoginController
 {
     protected $loginService;
 
-    public function __construct(LoginService $loginService)
+    public function __construct(LoginServiceInterface $loginService)
     {
         $this->loginService = $loginService;
     }
@@ -26,7 +26,7 @@ class LoginController
         {
             $this->loginService->authenticateUser($request->validated());
 
-            return redirect('/');
+            return redirect()->route('welcome.get');
         } 
         catch (ValidationException $e) 
         {

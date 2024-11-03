@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
+use App\Http\Services\RegisterService;
 
 class RegisterController
 {
+    protected $registerService;
+
+    public function __construct(RegisterService $registerService)
+    {
+        $this->registerService = $registerService;
+    }
+
     public function showRegistrationPage()
     {
         return view('register');
@@ -13,6 +21,8 @@ class RegisterController
 
     public function registerUser(RegisterRequest $request)
     {
-        $validatedData = $request->validated();
+        $this->registerService->createUser($request->validated());
+
+        return redirect('login');
     }
 }

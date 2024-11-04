@@ -7,6 +7,8 @@ use App\Http\Interfaces\RegisterServiceInterface;
 use App\Http\Services\RegisterService;
 use App\Http\Interfaces\LoginServiceInterface;
 use App\Http\Services\LoginService;
+use App\Http\Interfaces\PostsServiceInterface;
+use App\Http\Services\PostsService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -17,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(RegisterServiceInterface::class, RegisterService::class);
         $this->app->bind(LoginServiceInterface::class, LoginService::class);
+        $this->app->bind(PostsServiceInterface::class, PostsService::class);
     }
 
     /**

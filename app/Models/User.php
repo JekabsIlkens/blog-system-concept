@@ -10,7 +10,7 @@ class User extends Authenticatable
     use HasFactory;
 
     protected $fillable = [
-        'full-name',
+        'full_name',
         'email',
         'password',
     ];
@@ -24,5 +24,10 @@ class User extends Authenticatable
         return [
             'password' => 'hashed',
         ];
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class, 'author_id');
     }
 }

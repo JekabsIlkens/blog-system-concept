@@ -14,7 +14,7 @@ class RegisterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'full-name' => [
+            'full_name' => [
                 'required',
                 'string',
                 'max:255',
@@ -42,7 +42,7 @@ class RegisterRequest extends FormRequest
     public function messages()
     {
         return [
-            'full-name.regex' => 'May only contain letters, spaces, hyphens, and apostrophes.',
+            'full_name.regex' => 'May only contain letters, spaces, hyphens, and apostrophes.',
             'password.regex' => 'Must contain at least 1 upper-case letter, 1 digit, 1 symbol.',
         ];
     }

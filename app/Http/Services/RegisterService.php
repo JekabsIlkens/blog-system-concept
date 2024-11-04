@@ -11,7 +11,7 @@ class RegisterService implements RegisterServiceInterface
     public function createUser(array $data): User
     {
         return User::create([
-            'full-name' => $data['full-name'],
+            'full_name' => $data['full_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]);

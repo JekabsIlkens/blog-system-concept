@@ -14,4 +14,9 @@ class PostsService implements PostsServiceInterface
             ->leftJoin('users', 'posts.author_id', '=', 'users.id')
             ->get();
     }
+
+    public function getSinglePost($id): Post
+    {
+        return Post::with('author')->find($id);
+    }
 }

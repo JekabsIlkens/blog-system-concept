@@ -17,3 +17,4 @@ Route::post('/login', [LoginController::class, 'loginUser'])->name('login.post')
 Route::post('/logout', function () { Auth::logout(); return redirect('/'); })->name('logout.post');
 
 Route::get('/posts', [PostsController::class, 'index'])->name('posts.index.get');
+Route::get('/posts/{id}', [PostsController::class, 'show'])->name('posts.show.get');

@@ -19,4 +19,11 @@ class PostsController
 
         return view('posts.index', ['posts' => $allPosts]);
     }
+
+    public function show($id)
+    {
+        $singlePost = $this->postsService->getSinglePost($id);
+
+        return view('posts.show', ['post' => $singlePost]);
+    }
 }

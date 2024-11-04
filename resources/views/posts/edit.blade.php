@@ -28,9 +28,7 @@
                                 <label for="body" class="block text-sm/6 font-medium text-neutral-900">Content</label>
                             </div>
                             <div class="mt-2">
-                                <textarea id="body" name="body" type="text" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6">
-                                    {{ $post->body }}
-                                </textarea>
+                                <textarea id="body" name="body" type="text" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6">{{ $post->body }}</textarea>
                             </div>
                             @error('body')
                                 <div class="block text-sm/6 font-medium text-amber-600">{{ $message }}</div>

@@ -6,6 +6,7 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,7 @@ class LoginControllerTest extends TestCase
     public function test_logs_in_successfully()
     {
         $user = User::factory()->create([
-            'password' => bcrypt($password = 'Password123!'),
+            'password' => Hash::make($password = 'Password123!'),
         ]);
 
         $response = $this->post(route('login.post'), [
@@ -24,7 +25,7 @@ class LoginControllerTest extends TestCase
             'password' => $password,
         ]);
 
-        $response->assertRedirect(route('welcome.get'));
+        $response->assertRedirect(route('posts.index'));
         $this->assertTrue(Auth::check());
         $this->assertEquals(Auth::user()->id, $user->id);
     }

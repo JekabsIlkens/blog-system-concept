@@ -27,4 +27,16 @@ class PostsService implements PostsServiceInterface
         
         return Post::create($data);
     }
+
+    public function editPost($id, array $data): Post
+    {
+        $post = Post::findOrFail($id);
+
+        $post->title = $data['title'];
+        $post->body = $data['body'];
+
+        $post->save();
+
+        return $post;
+    }
 }

@@ -45,4 +45,24 @@ class PostsController
             return back()->withErrors(['error' => 'Failed to publish, please try again.']);
         }
     }
+
+    public function viewEditPage($id)
+    {
+        $targetPost = $this->postsService->getSinglePost($id);
+
+        return view('posts.edit', ['post' => $targetPost]);
+    }
+
+    public function edit($id, PostRequest $request)
+    {
+        try 
+        {
+            $this->postsService->editPost($id, $request->validated());
+            return redirect()->route('posts.index.get');
+        } 
+        catch (\Exception $e) 
+        {
+            return back()->withErrors(['error' => 'Failed to publish, please try again.']);
+        }
+    }
 }

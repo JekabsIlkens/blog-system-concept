@@ -27,16 +27,18 @@
                     <a href="{{ route('posts.index') }}" class="mr-4 rounded-md bg-neutral-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600"> 
                         Go back 
                     </a>
-                    <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="mr-4 rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"> 
-                        Edit 
-                    </a>
-                    <form action="{{ route('posts.delete', ['id' => $post->id]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="rounded-md bg-amber-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700">
-                            Delete
-                        </button>
-                    </form>
+                    @if(Auth::id() === $post->author->id)
+                        <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="mr-4 rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"> 
+                            Edit 
+                        </a>
+                        <form action="{{ route('posts.delete', ['id' => $post->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="rounded-md bg-amber-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700">
+                                Delete
+                            </button>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>     

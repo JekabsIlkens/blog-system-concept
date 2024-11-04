@@ -39,4 +39,11 @@ class PostsService implements PostsServiceInterface
 
         return $post;
     }
+
+    public function deletePost($id)
+    {
+        $post = Post::findOrFail($id);
+
+        $post->delete();
+    }
 }

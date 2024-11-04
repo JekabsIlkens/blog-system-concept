@@ -25,3 +25,5 @@ Route::get('/posts/{id}', [PostsController::class, 'show'])->name('posts.show.ge
 
 Route::get('/posts/{id}/edit', [PostsController::class, 'viewEditPage'])->name('posts.edit.get');
 Route::post('/posts/{id}/edit', [PostsController::class, 'edit'])->name('posts.edit.post');
+
+Route::post('/posts/{id}/delete', [PostsController::class, 'delete'])->name('posts.delete.post');

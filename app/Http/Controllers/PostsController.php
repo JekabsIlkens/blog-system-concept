@@ -65,4 +65,11 @@ class PostsController
             return back()->withErrors(['error' => 'Failed to publish, please try again.']);
         }
     }
+
+    public function delete($id)
+    {
+        $this->postsService->deletePost($id);
+        
+        return redirect()->route('posts.index.get');
+    }
 }

@@ -14,4 +14,6 @@ interface PostsServiceInterface
     public function createPost(array $data): Post;
 
     public function editPost($id, array $data): Post;
+
+    public function deletePost($id);
 }

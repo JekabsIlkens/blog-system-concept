@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Interfaces\PostsServiceInterface;
+use App\Http\Requests\PostRequest;
 
 class PostsController
 {
@@ -25,5 +26,23 @@ class PostsController
         $singlePost = $this->postsService->getSinglePost($id);
 
         return view('posts.show', ['post' => $singlePost]);
+    }
+
+    public function viewCreatePage()
+    {
+        return view('posts.create');
+    }
+
+    public function create(PostRequest $request)
+    {
+        try 
+        {
+            $this->postsService->createPost($request->validated());
+            return redirect()->route('posts.index.get');
+        } 
+        catch (\Exception $e) 
+        {
+            return back()->withErrors(['error' => 'Failed to publish, please try again.']);
+        }
     }
 }

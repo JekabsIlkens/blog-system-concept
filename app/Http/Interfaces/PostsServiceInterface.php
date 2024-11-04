@@ -10,4 +10,6 @@ interface PostsServiceInterface
     public function getAllPosts(): Collection;
 
     public function getSinglePost($id): Post;
+
+    public function createPost(array $data): Post;
 }

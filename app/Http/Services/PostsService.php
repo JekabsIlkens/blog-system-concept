@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Http\Interfaces\PostsServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 
 class PostsService implements PostsServiceInterface
@@ -18,5 +19,12 @@ class PostsService implements PostsServiceInterface
     public function getSinglePost($id): Post
     {
         return Post::with('author')->find($id);
+    }
+
+    public function createPost(array $data): Post
+    {
+        $data['author_id'] = Auth::id();
+        
+        return Post::create($data);
     }
 }

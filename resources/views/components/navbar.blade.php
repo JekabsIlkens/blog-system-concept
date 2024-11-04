@@ -9,6 +9,7 @@
                     <div class="flex items-baseline space-x-4">
                         <a href="{{ route('welcome.get') }}" class="{{ Request::is('/') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Welcome</a>
                         <a href="{{ route('posts.index.get') }}" class="{{ Request::is('posts') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Posts</a>
+                        <a href="{{ route('posts.create.get') }}" class="{{ Request::is('posts/new') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Write</a>
                     </div>
                 </div>
             </div>
@@ -31,6 +32,7 @@
                 <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                     <a href="{{ route('welcome.get') }}" class="{{ Request::is('/') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Welcome</a>
                     <a href="{{ route('posts.index.get') }}" class="{{ Request::is('posts') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Posts</a>
+                    <a href="{{ route('posts.create.get') }}" class="{{ Request::is('posts/new') ? 'bg-neutral-900 text-white' : 'text-neutral-300 hover:bg-neutral-700 hover:text-white' }} rounded-md px-3 py-2 text-sm font-medium">Write</a>
                     @if(Auth::check())
                         <form action="{{ route('logout.post') }}" method="POST">
                             @csrf

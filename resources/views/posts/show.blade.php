@@ -11,8 +11,8 @@
                 </div>
 
                 <div class="group relative flex items-center mx-4 my-4 border-t border-neutral-200">
-                    <article class="mt-4 border-solid border-0 border-neutral-200 rounded-md bg-neutral-100">
-                        <p class="line-clamp-3 text-base text-neutral-600 mx-4 my-4">
+                    <article class="w-full mt-4 border-solid border-0 border-neutral-200 rounded-md bg-neutral-100">
+                        <p class="text-base text-neutral-600 mx-4 my-4">
                             {{ $post->body }}
                         </p>
                         <div class="relative flex items-center mx-4 my-4">

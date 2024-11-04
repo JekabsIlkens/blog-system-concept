@@ -24,7 +24,7 @@ class RegisterController
         try 
         {
             $this->registerService->createUser($request->validated());
-            return redirect()->route('login.get');
+            return redirect()->route('login');
         } 
         catch (\Exception $e) 
         {

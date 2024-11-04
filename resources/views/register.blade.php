@@ -56,7 +56,7 @@
                     </form>
                       
                     <p class="mt-10 text-center text-sm/6 text-neutral-500"> Already have an account?
-                        <a href="{{ route('login.get') }}" class="font-semibold text-amber-600 hover:text-amber-500">Sign in</a>
+                        <a href="{{ route('login') }}" class="font-semibold text-amber-600 hover:text-amber-500">Sign in</a>
                     </p>
                 </div>
             </div>

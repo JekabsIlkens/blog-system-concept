@@ -3,31 +3,36 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return !Auth::check();
     }
 
     public function rules(): array
     {
-        return [
-            'full_name' => [
+        return 
+        [
+            'full_name' => 
+            [
                 'required',
                 'string',
                 'max:255',
                 'regex:/^[\p{L} \'-]+$/u',
             ],
-            'email' => [
+            'email' => 
+            [
                 'required',
                 'string',
                 'email',
                 'max:255',
                 'unique:users,email',
             ],
-            'password' => [
+            'password' => 
+            [
                 'required',
                 'string',
                 'min:8',
@@ -41,7 +46,8 @@ class RegisterRequest extends FormRequest
 
     public function messages()
     {
-        return [
+        return 
+        [
             'full_name.regex' => 'May only contain letters, spaces, hyphens, and apostrophes.',
             'password.regex' => 'Must contain at least 1 upper-case letter, 1 digit, 1 symbol.',
         ];

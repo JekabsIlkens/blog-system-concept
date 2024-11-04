@@ -2,7 +2,6 @@
     <main>
         <div class="bg-white py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
                 <div class="mx-auto max-w-2xl lg:mx-0">
                     <h2 class="text-pretty text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl">Discover new ideas</h2>
                 </div>
@@ -21,7 +20,7 @@
                                     {{ $post->body }}
                                 </p>
                                 <div class="relative flex items-center mx-4 my-4">
-                                    <a href="{{ route('posts.show.get', ['id' => $post->id]) }}" class="mr-2 rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+                                    <a href="{{ route('posts.show', ['id' => $post->id]) }}" class="mr-2 rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
                                         Read more
                                     </a>
                                     <div class="text-sm/6">

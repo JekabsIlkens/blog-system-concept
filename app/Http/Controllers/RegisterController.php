@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
 use App\Http\Interfaces\RegisterServiceInterface;
+use Exception;
 
 class RegisterController
 {
@@ -26,7 +27,7 @@ class RegisterController
             $this->registerService->createUser($request->validated());
             return redirect()->route('login');
         } 
-        catch (\Exception $e) 
+        catch (Exception $e) 
         {
             return back()->withErrors(['error' => 'Registration failed, please try again.']);
         }

@@ -2,7 +2,6 @@
     <main>
         <div class="bg-white py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
                 <div class="group relative flex items-center mx-4 my-4">
                     <img src="https://i.postimg.cc/bNnmBR2n/logo.png" alt="Blog Logo" class="h-12 w-12 rounded-full mr-4">
                     <h2 class="text-pretty text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl">
@@ -25,14 +24,15 @@
                 </div>
 
                 <div class="group relative flex items-center mx-4 my-4">
-                    <a href="{{ route('posts.index.get') }}" class="mr-4 rounded-md bg-neutral-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600"> 
+                    <a href="{{ route('posts.index') }}" class="mr-4 rounded-md bg-neutral-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600"> 
                         Go back 
                     </a>
-                    <a href="{{ route('posts.edit.get', ['id' => $post->id]) }}" class="mr-4 rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"> 
+                    <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="mr-4 rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"> 
                         Edit 
                     </a>
-                    <form action="{{ route('posts.delete.post', ['id' => $post->id]) }}" method="POST">
+                    <form action="{{ route('posts.delete', ['id' => $post->id]) }}" method="POST">
                         @csrf
+                        @method('DELETE')
                         <button type="submit" class="rounded-md bg-amber-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700">
                             Delete
                         </button>

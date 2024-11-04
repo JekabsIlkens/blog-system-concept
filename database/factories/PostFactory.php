@@ -11,10 +11,11 @@ class PostFactory extends Factory
 
     public function definition(): array
     {
-        return [
+        return 
+        [
             'title' => "Life hacks for " . fake()->jobTitle() . "s",
-            'body' => fake()->paragraph(4, true),
-            'created_at' => $this->faker->dateTimeBetween('-2 years', 'now'),
+            'body' => fake()->paragraph(12, true),
+            'created_at' => $this->faker->dateTimeBetween('-3 years', 'now'),
             'updated_at' => now(),
             'author_id' => User::factory()
         ];

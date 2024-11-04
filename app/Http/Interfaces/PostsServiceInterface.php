@@ -11,9 +11,9 @@ interface PostsServiceInterface
 
     public function getSinglePost($id): Post;
 
-    public function createPost(array $data): Post;
+    public function createPost(array $data): void;
 
-    public function editPost($id, array $data): Post;
+    public function editPost($id, array $data): void;
 
     public function deletePost($id);
 }

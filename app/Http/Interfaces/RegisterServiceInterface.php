@@ -2,9 +2,7 @@
 
 namespace App\Http\Interfaces;
 
-use App\Models\User;
-
 interface RegisterServiceInterface
 {
-    public function createUser(array $data): User;
+    public function createUser(array $data): void;
 }

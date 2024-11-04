@@ -10,9 +10,9 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        User::factory()->count(3)->create()->each(function ($user) 
+        User::factory()->count(5)->create()->each(function ($user) 
         {    
-            Post::factory()->count(2)->create(['author_id' => $user->id]);
+            Post::factory()->count(1)->create(['author_id' => $user->id]);
         });
     }
 }

@@ -26,7 +26,7 @@ class LoginController
         {
             $this->loginService->authenticateUser($request->validated());
 
-            return redirect()->route('welcome.get');
+            return redirect()->route('posts.index');
         } 
         catch (ValidationException $e) 
         {

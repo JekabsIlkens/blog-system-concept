@@ -3,25 +3,29 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class LoginRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        return !Auth::check();
     }
 
     public function rules(): array
     {
-        return [
-            'email' => [
+        return 
+        [
+            'email' => 
+            [
                 'required',
                 'string',
                 'email',
                 'max:255',
                 'exists:users,email',
             ],
-            'password' => [
+            'password' => 
+            [
                 'required',
                 'string',
                 'min:8',
@@ -35,7 +39,8 @@ class LoginRequest extends FormRequest
 
     public function messages()
     {
-        return [
+        return 
+        [
             'email.exists' => 'Provided email does not exist.',
             'password.regex' => 'Must contain at least 1 upper-case letter, 1 digit, 1 symbol.',
         ];

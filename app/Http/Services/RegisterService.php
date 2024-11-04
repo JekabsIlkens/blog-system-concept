@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\Hash;
 
 class RegisterService implements RegisterServiceInterface
 {
-    public function createUser(array $data): User
+    public function createUser(array $data): void
     {
-        return User::create([
+        User::create([
             'full_name' => $data['full_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])

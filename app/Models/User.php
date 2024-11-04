@@ -9,19 +9,22 @@ class User extends Authenticatable
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $fillable = 
+    [
         'full_name',
         'email',
         'password',
     ];
 
-    protected $hidden = [
+    protected $hidden = 
+    [
         'password',
     ];
 
     protected function casts(): array
     {
-        return [
+        return 
+        [
             'password' => 'hashed',
         ];
     }

@@ -44,7 +44,7 @@
                     </form>
                       
                     <p class="mt-10 text-center text-sm/6 text-neutral-500"> No account?
-                        <a href="{{ route('register.get') }}" class="font-semibold text-amber-600 hover:text-amber-500">Create an account</a>
+                        <a href="{{ route('register') }}" class="font-semibold text-amber-600 hover:text-amber-500">Create an account</a>
                     </p>
                 </div>
             </div>

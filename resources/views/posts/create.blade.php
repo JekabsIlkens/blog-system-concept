@@ -2,7 +2,6 @@
     <main>
         <div class="bg-white py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
-
                 <div class="group relative flex items-center mx-4 my-4">
                     <img src="https://i.postimg.cc/bNnmBR2n/logo.png" alt="Blog Logo" class="h-12 w-12 rounded-full mr-4">
                     <h2 class="text-pretty text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl">
@@ -39,7 +38,7 @@
                         </div>
                           
                         <div class="group relative flex items-center mt-4">
-                            <a href="{{ route('posts.index.get') }}" class="mr-4 rounded-md bg-neutral-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600"> 
+                            <a href="{{ route('posts.index') }}" class="mr-4 rounded-md bg-neutral-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600"> 
                                 Cancel 
                             </a>
                             <button type="submit" class="rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">

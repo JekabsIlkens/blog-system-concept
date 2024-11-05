@@ -15,5 +15,5 @@ interface PostsServiceInterface
 
     public function editPost($id, array $data): void;
 
-    public function deletePost($id);
+    public function deletePost($id): void;
 }

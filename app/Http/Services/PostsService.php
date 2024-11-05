@@ -38,7 +38,7 @@ class PostsService implements PostsServiceInterface
         $post->save();
     }
 
-    public function deletePost($id)
+    public function deletePost($id): void
     {
         $post = Post::findOrFail($id);
 

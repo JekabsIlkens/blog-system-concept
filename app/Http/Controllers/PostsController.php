@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Interfaces\PostsServiceInterface;
+use App\Http\Interfaces\CommentServiceInterface;
 use App\Http\Requests\PostRequest;
 use Exception;
 
 class PostsController
 {
     protected $postsService;
+    protected $commentsService;
 
-    public function __construct(PostsServiceInterface $postsService)
+    public function __construct(PostsServiceInterface $postsService, CommentServiceInterface $commentsService)
     {
         $this->postsService = $postsService;
+        $this->commentsService = $commentsService;
     }
 
     public function showAllPostsPage()
@@ -25,8 +28,9 @@ class PostsController
     public function showSinglePostPage($id)
     {
         $singlePost = $this->postsService->getSinglePost($id);
+        $postComments = $this->commentsService->getPostComments($id);
 
-        return view('posts.show', ['post' => $singlePost]);
+        return view('posts.show', ['post' => $singlePost, 'comments' => $postComments]);
     }
 
     public function showCreatePostPage()

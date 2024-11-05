@@ -9,12 +9,12 @@
                     </h2>
                 </div>
 
-                <div class="group relative flex items-center mx-4 my-4 border-t border-neutral-200">
+                <div class="group relative mx-4 my-4 border-t border-neutral-200">
                     <article class="w-full mt-4 border-solid border-0 border-neutral-200 rounded-md bg-neutral-100">
-                        <p class="text-base text-neutral-600 mx-4 my-4">
+                        <p class="text-base text-neutral-600 mx-4 my-4 pt-4">
                             {{ $post->body }}
                         </p>
-                        <div class="relative flex items-center mx-4 my-4">
+                        <div class="relative flex items-center mx-4 my-4 pb-4">
                             <div class="text-sm/6">
                                 <p class="font-semibold text-amber-600">Author: <span class="font-normal text-neutral-600">{{ $post->author->full_name }}</span></p>
                                 <p class="font-semibold text-amber-600">Posted: <span class="font-normal text-neutral-600">{{ $post->created_at->format('F j, Y, g:i a') }}</span></p>
@@ -23,10 +23,7 @@
                     </article>
                 </div>
 
-                <div class="group relative flex items-center mx-4 my-4">
-                    <a href="{{ route('posts.index') }}" class="mr-4 rounded-md bg-neutral-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600"> 
-                        Go back 
-                    </a>
+                <div class="group relative mx-4 my-4">
                     @if(Auth::id() === $post->author->id)
                         <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="mr-4 rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"> 
                             Edit 
@@ -60,19 +57,21 @@
                         </div>
                           
                         <div class="group relative flex items-center mt-4">
-                            <button type="submit" class="rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
-                                Add
+                            <button type="submit" class="rounded-md bg-amber-600 px-4 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
+                                Comment
                             </button>
                         </div>
                     </form>
                 </div>
 
-                <div class="group relative flex items-center mx-4 my-4 border-t border-neutral-200">
-                    <article class="w-full mt-4 border-solid border-0 border-neutral-200 rounded-md bg-neutral-100">
-                        <p class="text-base text-neutral-600 mx-4 my-4">
-                            Comments go here!
-                        </p>
-                    </article>
+                <div class="group relative mx-4 my-4 border-t border-neutral-200">
+                    @foreach ($comments as $comment)
+                        <article class="w-full mt-4 border-solid border-0 border-neutral-200 rounded-md bg-neutral-100">
+                            <p class="font-semibold text-amber-600 pt-4 pb-2 pl-4 pr-4">{{ $comment->user->full_name }} <span class="text-neutral-600">commented:</span></p>
+                            <p class="text-base text-neutral-600 pl-4 pr-4">{{ $comment->comment }}</p>
+                            <p class="text-base text-neutral-600 pt-2 pb-4 pl-4 pr-4">{{ $comment->created_at->format('F j, Y, g:i a') }}</p>
+                        </article>
+                    @endforeach
                 </div>
             </div>
         </div>     

@@ -9,6 +9,8 @@ use App\Http\Interfaces\LoginServiceInterface;
 use App\Http\Services\LoginService;
 use App\Http\Interfaces\PostsServiceInterface;
 use App\Http\Services\PostsService;
+use App\Http\Interfaces\CommentServiceInterface;
+use App\Http\Services\CommentService;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -20,6 +22,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(RegisterServiceInterface::class, RegisterService::class);
         $this->app->bind(LoginServiceInterface::class, LoginService::class);
         $this->app->bind(PostsServiceInterface::class, PostsService::class);
+        $this->app->bind(CommentServiceInterface::class, CommentService::class);
     }
 
     /**

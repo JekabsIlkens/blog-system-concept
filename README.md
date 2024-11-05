@@ -4,7 +4,7 @@
 - PHP (version 8.2 or later)
 - Composer (for PHP dependencies)
 - Npm (for frontend dependencies and asset building)
-- MySQL or PostgreSQL for local development
+- MySQL or PostgreSQL for a local database server
 
 ## Instructions on how to install and run the application
 
@@ -58,7 +58,7 @@ php artisan db:seed                 # Seeds the database
 If you encounter any issues when running the setups scripts,
 try executing these commands manually in the specified order.
 
-## Unit tests & Feature tests
+## Controller feature tests
 
 Use this command to run all the unit and feature tests:
 ```shell

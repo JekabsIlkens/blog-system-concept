@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('category_join', function (Blueprint $table) {
+        Schema::create('category_post', function (Blueprint $table) {
             $table->foreignId('post_id')->constrained()->onDelete('cascade');
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->primary(['post_id', 'category_id']);
@@ -17,6 +17,6 @@ return new class extends Migration
 
     public function down(): void
     {
-        Schema::dropIfExists('category_join');
+        Schema::dropIfExists('category_post');
     }
 };

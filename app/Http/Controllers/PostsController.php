@@ -47,7 +47,8 @@ class PostsController
     {
         try 
         {
-            $this->postsService->createPost($request->validated());
+            $post = $this->postsService->createPost($request->validated());
+            $post->categories()->attach($request->input('categories'));
             return redirect()->route('posts.index');
         } 
         catch (Exception $e) 

@@ -21,11 +21,11 @@ class PostsService implements PostsServiceInterface
         return Post::with('author')->find($id);
     }
 
-    public function createPost(array $data): void
+    public function createPost(array $data): Post
     {
         $data['author_id'] = Auth::id();
         
-        Post::create($data);
+        return Post::create($data);
     }
 
     public function editPost($id, array $data): void

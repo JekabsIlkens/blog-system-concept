@@ -67,9 +67,19 @@
                 <div class="group relative mx-4 my-4 border-t border-neutral-200">
                     @foreach ($comments as $comment)
                         <article class="w-full mt-4 border-solid border-0 border-neutral-200 rounded-md bg-neutral-100">
-                            <p class="font-semibold text-amber-600 pt-4 pb-2 pl-4 pr-4">{{ $comment->user->full_name }} <span class="text-neutral-600">commented:</span></p>
+                            <p class="font-semibold text-amber-600 pt-4 pb-2 pl-4 pr-4">{{ $comment->user->full_name }}<span class="text-neutral-600"> commented:</span></p>
                             <p class="text-base text-neutral-600 pl-4 pr-4">{{ $comment->comment }}</p>
                             <p class="text-base text-neutral-600 pt-2 pb-4 pl-4 pr-4">{{ $comment->created_at->format('F j, Y, g:i a') }}</p>
+
+                            @if(Auth::id() === $comment->user_id)
+                            <form action="{{ route('posts.comment.delete', ['id' => $comment->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="ml-4 mb-4 rounded-md bg-amber-700 px-4 py-1 text-sm font-semibold text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700">
+                                    Delete
+                                </button>
+                            </form>
+                            @endif
                         </article>
                     @endforeach
                 </div>

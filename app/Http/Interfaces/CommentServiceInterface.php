@@ -9,4 +9,6 @@ interface CommentServiceInterface
     public function getPostComments($id): Collection;
 
     public function createComment($id, array $data): void;
+
+    public function deleteComment($id): void;
 }

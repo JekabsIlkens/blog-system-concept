@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\EnsurePostOwnership;
+use App\Http\Middleware\EnsureCommentOwnership;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -33,4 +34,9 @@ Route::middleware([EnsurePostOwnership::class])->group(function () {
     Route::get('/posts/{id}/edit', [PostsController::class, 'showEditPostPage'])->name('posts.edit');
     Route::put('/posts/{id}/edit', [PostsController::class, 'editPost'])->name('posts.edit.put');
     Route::delete('/posts/{id}/delete', [PostsController::class, 'deletePost'])->name('posts.delete');
+});
+
+Route::middleware([EnsureCommentOwnership::class])->group(function () {
+
+    Route::delete('/posts/comment/{id}/delete', [CommentController::class, 'deleteComment'])->name('posts.comment.delete');
 });

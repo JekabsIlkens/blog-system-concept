@@ -27,4 +27,11 @@ class CommentController
             return back()->withErrors(['error' => 'Failed to publish, please try again.']);
         }
     }
+
+    public function deleteComment($id)
+    {
+        $this->commentsService->deleteComment($id);
+        
+        return redirect(url()->previous());
+    }
 }

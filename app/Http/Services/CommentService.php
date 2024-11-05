@@ -23,4 +23,11 @@ class CommentService implements CommentServiceInterface
         
         Comment::create($data);
     }
+
+    public function deleteComment($id): void
+    {
+        $comment = Comment::findOrFail($id);
+
+        $comment->delete();
+    }
 }

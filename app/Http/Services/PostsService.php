@@ -12,13 +12,23 @@ class PostsService implements PostsServiceInterface
     public function getAllPosts(): Collection
     {
         return Post::select('posts.*', 'users.id as author_id', 'users.full_name as author_name')
-            ->leftJoin('users', 'posts.author_id', '=', 'users.id')
-            ->get();
+                    ->leftJoin('users', 'posts.author_id', '=', 'users.id')
+                    ->get();
     }
 
     public function getSinglePost($id): Post
     {
         return Post::with('author')->find($id);
+    }
+
+    public function searchForPosts(array $data): Collection
+    {
+        $query = $data['query'];
+
+        return Post::with('author')
+                    ->where('title', 'LIKE', "%{$query}%")
+                    ->orWhere('body', 'LIKE', "%{$query}%")
+                    ->get();
     }
 
     public function createPost(array $data): Post

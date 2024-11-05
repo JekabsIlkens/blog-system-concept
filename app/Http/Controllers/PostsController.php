@@ -6,6 +6,7 @@ use App\Http\Interfaces\PostsServiceInterface;
 use App\Http\Interfaces\CommentServiceInterface;
 use App\Http\Interfaces\CategoryServiceInterface;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\SearchRequest;
 use Exception;
 
 class PostsController
@@ -26,6 +27,13 @@ class PostsController
         $allPosts = $this->postsService->getAllPosts();
 
         return view('posts.index', ['posts' => $allPosts]);
+    }
+
+    public function searchForPosts(SearchRequest $request)
+    {
+        $searchResults = $this->postsService->searchForPosts($request->validated());
+
+        return view('posts.search', ['posts' => $searchResults]);
     }
 
     public function showSinglePostPage($id)
@@ -73,7 +81,7 @@ class PostsController
         {
             $post = $this->postsService->editPost($id, $request->validated());
             $post->categories()->sync($request->input('categories'));
-            return redirect()->route('posts.index');
+            return redirect()->route('posts.show', $id);
         } 
         catch (Exception $e) 
         {

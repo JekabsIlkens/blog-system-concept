@@ -3,7 +3,7 @@
         <div class="bg-white py-24 sm:py-32">
             <div class="mx-auto max-w-7xl px-6 lg:px-8">
                 <div class="mx-auto max-w-2xl lg:mx-0">
-                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl">Discover new ideas</h2>
+                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl">Search results</h2>
                 </div>
                 <div class="inline-block mt-4">
                     <form action="{{ route('posts.search') }}" method="GET">
@@ -39,7 +39,7 @@
                                         Read
                                     </a>
                                     <div class="text-sm/6">
-                                        <p class="font-semibold text-amber-600">Author: <span class="font-normal text-neutral-600">{{ $post->author_name }}</span></p>
+                                        <p class="font-semibold text-amber-600">Author: <span class="font-normal text-neutral-600">{{ $post->author->full_name }}</span></p>
                                         <p class="font-semibold text-amber-600">Posted: <span class="font-normal text-neutral-600">{{ $post->created_at->format('F j, Y, g:i a') }}</span></p>
                                     </div>
                                 </div>
@@ -47,7 +47,7 @@
                         @endforeach
                     @else
                         <h3 class="mt-3 text-lg/6 font-semibold text-neutral-600">
-                            Nothing has been posted yet...
+                            Could not find matching results...
                         </h3>  
                     @endif
                 </div>

@@ -18,6 +18,7 @@ Route::get('/login', [LoginController::class, 'showLoginPage'])->name('login');
 Route::post('/login', [LoginController::class, 'loginUser'])->name('login.post');
 
 Route::get('/posts', [PostsController::class, 'showAllPostsPage'])->name('posts.index');
+Route::get('/posts/search', [PostsController::class, 'searchForPosts'])->name('posts.search');
 
 Route::middleware(['auth'])->group(function () {
 

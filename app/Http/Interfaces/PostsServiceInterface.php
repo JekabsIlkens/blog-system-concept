@@ -11,6 +11,8 @@ interface PostsServiceInterface
 
     public function getSinglePost($id): Post;
 
+    public function searchForPosts(array $data): Collection;
+
     public function createPost(array $data): Post;
 
     public function editPost($id, array $data): Post;

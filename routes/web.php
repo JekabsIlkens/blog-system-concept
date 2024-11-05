@@ -6,6 +6,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostsController;
+use App\Http\Controllers\CommentController;
 
 Route::get('/', function () { return view('welcome'); })->name('welcome');
 
@@ -22,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [LogoutController::class, 'logoutUser'])->name('logout.post');
     Route::get('posts/create', [PostsController::class, 'showCreatePostPage'])->name('posts.create');
     Route::post('posts/create', [PostsController::class, 'createPost'])->name('posts.create.post');
+    Route::post('/posts/{id}/comment', [CommentController::class, 'createComment'])->name('posts.comment.post');
 });
 
 Route::get('/posts/{id}', [PostsController::class, 'showSinglePostPage'])->name('posts.show');

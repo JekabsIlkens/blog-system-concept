@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class PostRequest extends FormRequest
+class CommentRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -16,17 +16,11 @@ class PostRequest extends FormRequest
     {
         return 
         [
-            'title' => 
+            'comment' => 
             [
                 'required',
                 'string',
-                'max:150',
-            ],
-            'body' => 
-            [
-                'required',
-                'string',
-                'max:15000'
+                'max:2000'
             ],
         ];
     }
@@ -35,8 +29,7 @@ class PostRequest extends FormRequest
     {
         return 
         [
-            'title.max' => 'The title should be a brief description of the subject. (Character limit: 150)',
-            'body.max' => 'Please split this post into a multiple blog post series. (Character limit: 15000)',
+            'comment.max' => 'Please split this into multiple comments. (Character limit: 2000)',
         ];
     }
 }

@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="group relative flex items-center mx-4 my-4 border-t border-neutral-200">
-                    <form action="#" method="POST" class="w-full mt-4 px-4 py-4 border-solid border-0 border-neutral-200 rounded-md bg-neutral-100">
+                    <form action="{{ route('posts.comment.post', ['id' => $post->id]) }}" method="POST" class="w-full mt-4 px-4 py-4 border-solid border-0 border-neutral-200 rounded-md bg-neutral-100">
                         @csrf                          
                         <div>
                             <div class="flex items-center justify-between">

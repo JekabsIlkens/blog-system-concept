@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Interfaces\PostsServiceInterface;
 use App\Http\Interfaces\CommentServiceInterface;
+use App\Http\Interfaces\CategoryServiceInterface;
 use App\Http\Requests\PostRequest;
 use Exception;
 
@@ -11,11 +12,13 @@ class PostsController
 {
     protected $postsService;
     protected $commentsService;
+    protected $categoryService;
 
-    public function __construct(PostsServiceInterface $postsService, CommentServiceInterface $commentsService)
+    public function __construct(PostsServiceInterface $postsService, CommentServiceInterface $commentsService, CategoryServiceInterface $categoryService)
     {
         $this->postsService = $postsService;
         $this->commentsService = $commentsService;
+        $this->categoryService = $categoryService;
     }
 
     public function showAllPostsPage()
@@ -35,7 +38,9 @@ class PostsController
 
     public function showCreatePostPage()
     {
-        return view('posts.create');
+        $allCategories = $this->categoryService->getAllCategories();
+
+        return view('posts.create', ['categories' => $allCategories]);
     }
 
     public function createPost(PostRequest $request)

@@ -36,6 +36,19 @@
                                 <div class="block text-sm/6 font-medium text-amber-600">{{ $errors->first('error') }}</div>
                             @endif
                         </div>
+
+                        <div>
+                            <div class="flex items-center justify-between mt-4">
+                                <label for="categories" class="block text-sm/6 font-medium text-neutral-900">Categories</label>
+                            </div>
+                            <div class="mt-2">
+                                <select id="categories" name="categories[]" multiple>
+                                    @foreach($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                           
                         <div class="group relative flex items-center mt-4">
                             <a href="{{ route('posts.index') }}" class="mr-4 rounded-md bg-neutral-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600"> 

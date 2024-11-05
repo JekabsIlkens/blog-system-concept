@@ -61,15 +61,18 @@ class PostsController
     public function showEditPostPage($id)
     {
         $targetPost = $this->postsService->getSinglePost($id);
+        $allCategories = $this->categoryService->getAllCategories();
+        $postCategories = $this->categoryService->getPostCategories($id);
 
-        return view('posts.edit', ['post' => $targetPost]);
+        return view('posts.edit', ['post' => $targetPost, 'categories' => $allCategories, 'activeCategories' => $postCategories]);
     }
 
     public function editPost($id, PostRequest $request)
     {
         try 
         {
-            $this->postsService->editPost($id, $request->validated());
+            $post = $this->postsService->editPost($id, $request->validated());
+            $post->categories()->sync($request->input('categories'));
             return redirect()->route('posts.index');
         } 
         catch (Exception $e) 

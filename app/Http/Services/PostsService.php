@@ -28,7 +28,7 @@ class PostsService implements PostsServiceInterface
         return Post::create($data);
     }
 
-    public function editPost($id, array $data): void
+    public function editPost($id, array $data): Post
     {
         $post = Post::findOrFail($id);
 
@@ -36,6 +36,8 @@ class PostsService implements PostsServiceInterface
         $post->body = $data['body'];
 
         $post->save();
+
+        return $post;
     }
 
     public function deletePost($id): void

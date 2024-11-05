@@ -7,8 +7,6 @@ use App\Models\User;
 
 class PostFactory extends Factory
 {
-    protected static ?string $password;
-
     public function definition(): array
     {
         return 

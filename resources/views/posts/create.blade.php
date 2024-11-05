@@ -39,16 +39,18 @@
 
                         <div>
                             <div class="flex items-center justify-between mt-4">
-                                <label for="categories" class="block text-sm/6 font-medium text-neutral-900">Categories</label>
+                                <label for="categories" class="block text-sm font-medium text-neutral-900">Categories</label>
                             </div>
-                            <div class="mt-2">
-                                <select id="categories" name="categories[]" multiple>
-                                    @foreach($categories as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
+                            <div class="mt-2 h-48 overflow-auto border border-neutral-300 rounded-md p-2">
+                                @foreach($categories as $category)
+                                    <div class="flex items-center mb-2">
+                                        <input id="category_{{ $category->id }}" name="categories[]" type="checkbox" value="{{ $category->id }}" class="mr-2 rounded border-neutral-600 checked:bg-amber-600 checked:border-amber-600 hover:bg-neutral-200">
+                                        <label for="category_{{ $category->id }}" class="text-sm font-medium text-neutral-900">{{ $category->name }}</label>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
+                        
                           
                         <div class="group relative flex items-center mt-4">
                             <a href="{{ route('posts.index') }}" class="mr-4 rounded-md bg-neutral-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600"> 

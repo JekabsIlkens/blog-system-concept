@@ -10,32 +10,36 @@
                 </div>
 
                 <div class="group relative mx-4 my-4 border-t border-neutral-200">
+                    @foreach ($categories as $category)
+                        <div class="inline-block rounded-md bg-neutral-500 px-4 py-1.5 mt-4 text-sm font-semibold text-white shadow-sm">
+                            {{$category->name}}
+                        </div>
+                    @endforeach
                     <article class="w-full mt-4 border-solid border-0 border-neutral-200 rounded-md bg-neutral-100">
                         <p class="text-base text-neutral-600 mx-4 my-4 pt-4">
                             {{ $post->body }}
                         </p>
-                        <div class="relative flex items-center mx-4 my-4 pb-4">
+                        <div class="relative flex items-center mx-4 my-4">
                             <div class="text-sm/6">
                                 <p class="font-semibold text-amber-600">Author: <span class="font-normal text-neutral-600">{{ $post->author->full_name }}</span></p>
                                 <p class="font-semibold text-amber-600">Posted: <span class="font-normal text-neutral-600">{{ $post->created_at->format('F j, Y, g:i a') }}</span></p>
                             </div>
                         </div>
+                        <div class="relative flex items-center mx-4 my-4 pb-4">
+                            @if(Auth::id() === $post->author->id)
+                                <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="rounded-md bg-amber-600 px-4 py-1 mr-4 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"> 
+                                    Edit 
+                                </a>
+                                <form action="{{ route('posts.delete', ['id' => $post->id]) }}" method="POST" class="inline-flex">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="rounded-md bg-amber-700 px-4 py-1 text-sm font-semibold text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700">
+                                        Delete
+                                    </button>
+                                </form>
+                            @endif
+                        </div>
                     </article>
-                </div>
-
-                <div class="group relative mx-4 my-4">
-                    @if(Auth::id() === $post->author->id)
-                        <a href="{{ route('posts.edit', ['id' => $post->id]) }}" class="mr-4 rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600"> 
-                            Edit 
-                        </a>
-                        <form action="{{ route('posts.delete', ['id' => $post->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="rounded-md bg-amber-700 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-700">
-                                Delete
-                            </button>
-                        </form>
-                    @endif
                 </div>
 
                 <div class="group relative flex items-center mx-4 my-4 border-t border-neutral-200">

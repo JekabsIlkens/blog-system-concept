@@ -32,8 +32,9 @@ class PostsController
     {
         $singlePost = $this->postsService->getSinglePost($id);
         $postComments = $this->commentsService->getPostComments($id);
+        $postCategories = $this->categoryService->getPostCategories($id);
 
-        return view('posts.show', ['post' => $singlePost, 'comments' => $postComments]);
+        return view('posts.show', ['post' => $singlePost, 'comments' => $postComments, 'categories' => $postCategories]);
     }
 
     public function showCreatePostPage()

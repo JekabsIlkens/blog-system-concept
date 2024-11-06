@@ -25,6 +25,12 @@ DB_USERNAME=your_database_user
 DB_PASSWORD=your_database_password
 ```
 
+### Make sure you have the following extensions enabled in your `php.ini` file:
+```shell
+extension=pdo_mysql
+extension=pdo_pgsql
+```
+
 ### Run the setup script to install dependencies and prepare the database:
 For Windows systems:
 ```shell
@@ -60,7 +66,7 @@ try executing these commands manually in the specified order.
 
 ## Controller feature tests
 
-Use this command to run all the unit and feature tests:
+Use this command to run feature tests:
 ```shell
 php artisan test
 ```

@@ -30,6 +30,17 @@ class LoginControllerTest extends TestCase
         $this->assertEquals(Auth::user()->id, $user->id);
     }
 
+    public function test_fails_with_unregistered_email()
+    {
+        $response = $this->post(route('login.post'), [
+            'email' => 'unknown@mail.com',
+            'password' => 'Password321!',
+        ]);
+
+        $response->assertSessionHasErrors(['email']);
+        $this->assertFalse(Auth::check());
+    }
+
     public function test_fails_with_incorrect_password()
     {
         $user = User::factory()->create([

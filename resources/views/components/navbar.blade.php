@@ -18,6 +18,7 @@
             <div class="hidden md:block ml-auto">
                 <div class="flex items-baseline space-x-4">
                     @if(Auth::check())
+                        <p class="text-amber-500 rounded-md px-3 py-2 text-sm font-medium">{{Auth::user()->full_name}}</p>
                         <form action="{{ route('logout.post') }}" method="POST">
                             @csrf
                             <button type="submit" class='text-neutral-300 hover:bg-neutral-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium'>

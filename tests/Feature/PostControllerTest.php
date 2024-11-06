@@ -58,7 +58,7 @@ class PostControllerTest extends TestCase
             'body' => 'Updated body content.'
         ]);
 
-        $response->assertRedirect(route('posts.index'));
+        $response->assertRedirect(route('posts.show', $post->id));
         $this->assertDatabaseHas('posts', [
             'id' => $post->id,
             'title' => 'Updated Title',

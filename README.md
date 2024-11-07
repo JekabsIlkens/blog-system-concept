@@ -3,8 +3,8 @@
 ### Ensure you have the following installed:
 - PHP (version 8.2 or later)
 - Composer (for PHP dependencies)
-- Npm (for frontend dependencies and asset building)
-- MySQL or PostgreSQL for a local database server
+- Node/npm (for frontend dependencies and asset building)
+- MySQL or PostgreSQL (for a local database server)
 
 ## Instructions on how to install and run the application
 
@@ -49,7 +49,7 @@ php artisan serve
 ```
 Visit http://127.0.0.1:8000/
 
-## What does the `setup.bat` and `setup.sh` do?
+## What's inside the `setup`:
 
 It executes all the necessary setup commands in order:
 ```shell
@@ -61,17 +61,14 @@ php artisan key:generate            # Generates the application key
 php artisan migrate                 # Runs the database migrations
 php artisan db:seed                 # Seeds the database
 ```
-If you encounter any issues when running the setups scripts,
-try executing these commands manually in the specified order.
+If you encounter any issues when running the setup script,
+execute these commands manually in the specified order.
 
 ## Controller feature tests
 
-Use this command to run feature tests:
+Running unit and feature tests:
 ```shell
 php artisan test
 ```
-**Note:** running the tests will refresh the database! </br> </br>
-So you will need to manually re-seed it with this command:
-```shell
-php artisan db:seed
-```
+**Note:** running the tests will refresh the database!
+You will need to manually re-seed it with `php artisan db:seed`.

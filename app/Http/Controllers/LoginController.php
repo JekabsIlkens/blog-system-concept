@@ -17,7 +17,7 @@ class LoginController
 
     public function showLoginPage()
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function loginUser(LoginRequest $request)

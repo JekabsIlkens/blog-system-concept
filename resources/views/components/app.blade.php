@@ -10,7 +10,7 @@
         <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     </head>
 
-    <body class="h-full">
+    <body class="h-full bg-neutral-100">
         <div class="min-h-full">
 
             @include('components.navbar')

@@ -17,7 +17,7 @@ class RegisterController
 
     public function showRegistrationPage()
     {
-        return view('register');
+        return view('auth.register');
     }
 
     public function registerUser(RegisterRequest $request)

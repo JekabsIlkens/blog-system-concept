@@ -7,7 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\PostsController;
-use App\Http\Controllers\CommentController;
+use App\Http\Controllers\CommentsController;
 
 Route::get('/', function () { return view('welcome'); })->name('welcome');
 
@@ -29,7 +29,7 @@ Route::middleware(['auth'])->group(function ()
 
     Route::post('/posts', [PostsController::class, 'store'])->name('posts.store');
 
-    Route::post('/posts/{id}/comment', [CommentController::class, 'createComment'])->name('posts.comment.post');
+    Route::post('/posts/{id}/comments', [CommentsController::class, 'store'])->name('comments.store');
 
     Route::post('/logout', [LogoutController::class, 'destroy'])->name('logout');
 });
@@ -47,5 +47,5 @@ Route::middleware([EnsurePostOwnership::class])->group(function ()
 
 Route::middleware([EnsureCommentOwnership::class])->group(function () 
 {
-    Route::delete('/posts/comment/{id}/delete', [CommentController::class, 'deleteComment'])->name('posts.comment.delete');
+    Route::delete('/comments/{id}', [CommentsController::class, 'destroy'])->name('comments.destroy');
 });

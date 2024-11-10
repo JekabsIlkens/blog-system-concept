@@ -29,9 +29,6 @@ class PostsController
         return view('posts.search', ['posts' => $searchResults]);
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $allPosts = $this->postsService->getAllPosts();
@@ -39,9 +36,6 @@ class PostsController
         return view('posts.index', ['posts' => $allPosts]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $allCategories = $this->categoryService->getAllCategories();
@@ -49,9 +43,6 @@ class PostsController
         return view('posts.create', ['categories' => $allCategories]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(PostRequest $request)
     {
         try 
@@ -66,9 +57,6 @@ class PostsController
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         $singlePost = $this->postsService->getSinglePost($id);
@@ -78,9 +66,6 @@ class PostsController
         return view('posts.show', ['post' => $singlePost, 'comments' => $postComments, 'categories' => $postCategories]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
         $targetPost = $this->postsService->getSinglePost($id);
@@ -90,9 +75,6 @@ class PostsController
         return view('posts.edit', ['post' => $targetPost, 'categories' => $allCategories, 'activeCategories' => $postCategories]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(string $id, PostRequest $request)
     {
         try 
@@ -107,9 +89,6 @@ class PostsController
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(string $id)
     {
         $this->postsService->deletePost($id);

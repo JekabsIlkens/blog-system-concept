@@ -6,7 +6,7 @@ use App\Http\Interfaces\CommentServiceInterface;
 use App\Http\Requests\CommentRequest;
 use Exception;
 
-class CommentController
+class CommentsController
 {
     protected $commentsService;
 
@@ -15,7 +15,7 @@ class CommentController
         $this->commentsService = $commentsService;
     }
 
-    public function createComment($id, CommentRequest $request)
+    public function store(string $id, CommentRequest $request)
     {
         try 
         {
@@ -28,7 +28,7 @@ class CommentController
         }
     }
 
-    public function deleteComment($id)
+    public function destroy(string $id)
     {
         $this->commentsService->deleteComment($id);
         

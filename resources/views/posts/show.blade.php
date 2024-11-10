@@ -39,7 +39,7 @@
             </div>
 
             <div class="group relative flex items-center">
-                <form action="{{ route('posts.comment.post', ['id' => $post->id]) }}" method="POST" class="w-full px-4 py-4 bg-white shadow-md rounded-md">
+                <form action="{{ route('comments.store', ['id' => $post->id]) }}" method="POST" class="w-full px-4 py-4 bg-white shadow-md rounded-md">
                     @csrf                          
                     <div>
                         <x-input-label for="comment" value="Leave a comment:" />
@@ -63,7 +63,7 @@
                         <p class="text-base text-neutral-600 pt-2 pb-4 pl-4 pr-4">{{ $comment->created_at->format('F j, Y, g:i a') }}</p>
 
                         @if(Auth::id() === $comment->user_id)
-                            <form action="{{ route('posts.comment.delete', ['id' => $comment->id]) }}" method="POST">
+                            <form action="{{ route('comments.destroy', ['id' => $comment->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <x-danger-button class="ml-4 mb-4">Delete</x-danger-button>

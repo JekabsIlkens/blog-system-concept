@@ -49,7 +49,7 @@ php artisan serve
 ```
 Visit http://127.0.0.1:8000/
 
-## What's inside the `setup`:
+## What's inside the setup:
 
 It executes all the necessary setup commands in order:
 ```shell
@@ -64,9 +64,8 @@ php artisan db:seed                 # Seeds the database
 If you encounter any issues when running the setup script,
 execute these commands manually in the specified order.
 
-## Controller feature tests
+## Running unit and feature tests:
 
-Running unit and feature tests:
 ```shell
 php artisan test
 ```

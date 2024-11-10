@@ -23,13 +23,6 @@ class PostController
         $this->categoryService = $categoryService;
     }
 
-    public function searchForPosts(SearchRequest $request)
-    {
-        $searchResults = $this->postsService->searchForPosts($request->validated());
-
-        return view('posts.search', ['posts' => $searchResults]);
-    }
-
     public function index()
     {
         $allPosts = $this->postsService->getAllPosts();
@@ -88,5 +81,12 @@ class PostController
         $post->delete();
         
         return redirect()->route('posts.index');
+    }
+
+    public function search(SearchRequest $request)
+    {
+        $searchResults = $this->postsService->searchForPosts($request->validated());
+
+        return view('posts.search', ['posts' => $searchResults]);
     }
 }

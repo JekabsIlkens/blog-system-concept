@@ -7,7 +7,8 @@ use App\Http\Services\CommentService;
 use App\Http\Services\CategoryService;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\SearchRequest;
-use Exception;
+use App\Models\Post;
+use App\Models\Category;
 
 class PostController
 {
@@ -45,53 +46,46 @@ class PostController
 
     public function store(PostRequest $request)
     {
-        try 
-        {
-            $post = $this->postsService->createPost($request->validated());
-            $post->categories()->attach($request->input('categories'));
-            return redirect()->route('posts.index');
-        } 
-        catch (Exception $e) 
-        {
-            return back()->withErrors(['error' => 'Failed to publish, please try again.']);
-        }
+        $post = $this->postsService->createPost($request->validated());
+        $post->categories()->attach($request->input('categories'));
+
+        return redirect()->route('posts.index');
     }
 
-    public function show(string $id)
+    public function show(Post $post)
     {
-        $singlePost = $this->postsService->getPostById($id);
-        $postComments = $this->commentsService->getCommentsByPostId($id);
-        $postCategories = $this->categoryService->getCategoriesByPostId($id);
+        $post->load('comments', 'categories');
 
-        return view('posts.show', ['post' => $singlePost, 'comments' => $postComments, 'categories' => $postCategories]);
+        return view('posts.show', [
+            'post' => $post,
+            'comments' => $post->comments, 
+            'categories' => $post->categories
+        ]);
     }
 
-    public function edit(string $id)
+    public function edit(Post $post)
     {
-        $targetPost = $this->postsService->getPostById($id);
-        $allCategories = $this->categoryService->getAllCategories();
-        $postCategories = $this->categoryService->getCategoriesByPostId($id);
+        $allCategories = Category::all();
+        $postCategories = $post->categories;
 
-        return view('posts.edit', ['post' => $targetPost, 'categories' => $allCategories, 'activeCategories' => $postCategories]);
+        return view('posts.edit', [
+            'post' => $post,
+            'categories' => $allCategories,
+            'activeCategories' => $postCategories
+        ]);
     }
 
-    public function update(string $id, PostRequest $request)
+    public function update(Post $post, PostRequest $request)
     {
-        try 
-        {
-            $post = $this->postsService->updatePost($id, $request->validated());
-            $post->categories()->sync($request->input('categories'));
-            return redirect()->route('posts.show', $id);
-        } 
-        catch (Exception $e) 
-        {
-            return back()->withErrors(['error' => 'Failed to publish, please try again.']);
-        }
+        $post->update($request->validated());
+        $post->categories()->sync($request->input('categories'));
+
+        return redirect()->route('posts.show', $post);
     }
 
-    public function destroy(string $id)
+    public function destroy(Post $post)
     {
-        $this->postsService->deletePost($id);
+        $post->delete();
         
         return redirect()->route('posts.index');
     }

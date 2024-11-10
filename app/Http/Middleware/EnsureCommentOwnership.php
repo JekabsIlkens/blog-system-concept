@@ -12,9 +12,7 @@ class EnsureCommentOwnership
 {
     public function handle(Request $request, Closure $next): Response
     {
-        $commentId = $request->route('id');
-        
-        $comment = Comment::find($commentId);
+        $comment = $request->route('comment');
 
         if ($comment->user_id !== Auth::id()) 
         {

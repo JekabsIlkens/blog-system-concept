@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Services\CommentService;
 use App\Http\Requests\CommentRequest;
-use Exception;
+use App\Models\Comment;
+use App\Models\Post;
 
 class CommentController
 {
@@ -15,22 +17,19 @@ class CommentController
         $this->commentsService = $commentsService;
     }
 
-    public function store(string $id, CommentRequest $request)
+    public function store(Post $post, CommentRequest $request)
     {
-        try 
-        {
-            $this->commentsService->createComment($id, $request->validated());
-            return redirect()->route('posts.show', ['id' => $id]);
-        } 
-        catch (Exception $e) 
-        {
-            return back()->withErrors(['error' => 'Failed to publish, please try again.']);
-        }
+        $data = $request->validated();
+
+        $data['user_id'] = Auth::id();
+        $post->comments()->create($data);
+
+        return redirect()->route('posts.show', $post);
     }
 
-    public function destroy(string $id)
+    public function destroy(Comment $comment)
     {
-        $this->commentsService->deleteComment($id);
+        $comment->delete();
         
         return redirect(url()->previous());
     }

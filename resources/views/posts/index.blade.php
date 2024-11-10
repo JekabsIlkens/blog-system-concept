@@ -31,7 +31,7 @@
                             </p>
 
                             <div class="relative flex items-center mx-4 my-4">
-                                <x-nav-link href="{{ route('posts.show', ['id' => $post->id]) }}" class="mr-2 rounded-md shadow-md text-white bg-amber-600 hover:bg-amber-500">
+                                <x-nav-link href="{{ route('posts.show', $post) }}" class="mr-2 rounded-md shadow-md text-white bg-amber-600 hover:bg-amber-500">
                                     Read
                                 </x-nav-link>
 

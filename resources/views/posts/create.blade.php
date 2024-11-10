@@ -21,7 +21,6 @@
                         <x-input-area id="body" name="body" type="text" value="{{ old('body') }}"></x-input-area>
 
                         <x-input-error for="body" />
-                        <x-server-error for="error" />
                     </div>
 
                     <div class="mt-2">

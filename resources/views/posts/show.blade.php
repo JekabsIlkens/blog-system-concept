@@ -24,11 +24,11 @@
 
                     <div class="relative flex items-center mx-4 my-4 pb-4">
                         @if(Auth::id() === $post->author->id)
-                            <x-nav-link href="{{ route('posts.edit', ['id' => $post->id]) }}" class="rounded-md shadow-md text-white bg-amber-600 hover:bg-amber-500">
+                            <x-nav-link href="{{ route('posts.edit', $post) }}" class="rounded-md shadow-md text-white bg-amber-600 hover:bg-amber-500">
                                 Edit
                             </x-nav-link>
 
-                            <form action="{{ route('posts.destroy', ['id' => $post->id]) }}" method="POST" class="inline-flex">
+                            <form action="{{ route('posts.destroy', $post) }}" method="POST" class="inline-flex">
                                 @csrf
                                 @method('DELETE')
                                 <x-danger-button class="ml-4">Delete</x-danger-button>
@@ -39,14 +39,13 @@
             </div>
 
             <div class="group relative flex items-center">
-                <form action="{{ route('comments.store', ['id' => $post->id]) }}" method="POST" class="w-full px-4 py-4 bg-white shadow-md rounded-md">
+                <form action="{{ route('comments.store', $post) }}" method="POST" class="w-full px-4 py-4 bg-white shadow-md rounded-md">
                     @csrf                          
                     <div>
                         <x-input-label for="comment" value="Leave a comment:" />
                         <x-input-area id="comment" name="comment" type="text" value="{{ old('comment') }}"></x-input-area>
 
                         <x-input-error for="comment" />
-                        <x-server-error for="error" />
                     </div>
                           
                     <div class="group relative flex items-center mt-2">
@@ -63,7 +62,7 @@
                         <p class="text-base text-neutral-600 pt-2 pb-4 pl-4 pr-4">{{ $comment->created_at->format('F j, Y, g:i a') }}</p>
 
                         @if(Auth::id() === $comment->user_id)
-                            <form action="{{ route('comments.destroy', ['id' => $comment->id]) }}" method="POST">
+                            <form action="{{ route('comments.destroy', $comment) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <x-danger-button class="ml-4 mb-4">Delete</x-danger-button>

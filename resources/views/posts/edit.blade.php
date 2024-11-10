@@ -7,7 +7,7 @@
             </div>
 
             <div class="group relative flex items-center">
-                <form action="{{ route('posts.update', ['id' => $post->id]) }}" method="POST" class="w-full mt-4 px-4 py-4 bg-white shadow-md rounded-md">
+                <form action="{{ route('posts.update', $post) }}" method="POST" class="w-full mt-4 px-4 py-4 bg-white shadow-md rounded-md">
                     @csrf
                     @method('PUT')
                     <div>
@@ -22,7 +22,6 @@
                         <x-input-area id="body" name="body" type="text">{{ $post->body }}</x-input-area>
 
                         <x-input-error for="body" />
-                        <x-server-error for="error" />
                     </div>
 
                     <div class="mt-2">

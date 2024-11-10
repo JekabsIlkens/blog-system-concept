@@ -1,4 +1,4 @@
-<x-app>
+<x-app-layout>
     <div class="bg-white py-24 sm:py-32">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
             <div class="group relative flex items-center mx-4 my-4">
@@ -62,4 +62,4 @@
             </div>
         </div>
     </div>     
-</x-app>
+</x-app-layout>

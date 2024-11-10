@@ -13,7 +13,7 @@
     <body class="h-full bg-neutral-100">
         <div class="min-h-full">
 
-            @include('components.navbar')
+            @include('layouts.navbar')
 
             <main> {{ $slot }} </main>
 

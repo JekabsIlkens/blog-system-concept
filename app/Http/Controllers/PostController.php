@@ -2,44 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Services\PostsService;
-use App\Http\Services\CommentService;
-use App\Http\Services\CategoryService;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\SearchRequest;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Post;
 use App\Models\Category;
 
 class PostController
 {
-    protected $postsService;
-    protected $commentsService;
-    protected $categoryService;
-
-    public function __construct(PostsService $postsService, CommentService $commentsService, CategoryService $categoryService)
-    {
-        $this->postsService = $postsService;
-        $this->commentsService = $commentsService;
-        $this->categoryService = $categoryService;
-    }
-
     public function index()
     {
-        $allPosts = $this->postsService->getAllPosts();
+        $allPosts = Post::with('author')->get();
 
         return view('posts.index', ['posts' => $allPosts]);
     }
 
     public function create()
     {
-        $allCategories = $this->categoryService->getAllCategories();
+        $allCategories = Category::all();
 
         return view('posts.create', ['categories' => $allCategories]);
     }
 
     public function store(PostRequest $request)
     {
-        $post = $this->postsService->createPost($request->validated());
+        $data = $request->validated();
+        $data['author_id'] = Auth::id();
+
+        $post = Post::create($data);
         $post->categories()->attach($request->input('categories'));
 
         return redirect()->route('posts.index');
@@ -85,7 +75,12 @@ class PostController
 
     public function search(SearchRequest $request)
     {
-        $searchResults = $this->postsService->searchForPosts($request->validated());
+        $query = $request->validated()['query'];
+
+        $searchResults = Post::with('author')
+            ->where('title', 'LIKE', "%{$query}%")
+            ->orWhere('body', 'LIKE', "%{$query}%")
+            ->get();
 
         return view('posts.search', ['posts' => $searchResults]);
     }

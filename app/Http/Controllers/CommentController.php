@@ -3,20 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-use App\Http\Services\CommentService;
 use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
 
 class CommentController
 {
-    protected $commentsService;
-
-    public function __construct(CommentService $commentsService)
-    {
-        $this->commentsService = $commentsService;
-    }
-
     public function store(Post $post, CommentRequest $request)
     {
         $data = $request->validated();

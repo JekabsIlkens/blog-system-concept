@@ -3,17 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
-use App\Http\Services\RegisterService;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 
 class RegisterController
 {
-    protected $registerService;
-
-    public function __construct(RegisterService $registerService)
-    {
-        $this->registerService = $registerService;
-    }
-
     public function create()
     {
         return view('auth.register');
@@ -21,7 +15,10 @@ class RegisterController
 
     public function store(RegisterRequest $request)
     {
-        $this->registerService->createUser($request->validated());
+        $data = $request->validated();
+        $data['password'] = Hash::make($data['password']);
+
+        User::create($data);
 
         return redirect()->route('login');
     }

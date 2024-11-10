@@ -15,12 +15,12 @@ class LoginController
         $this->loginService = $loginService;
     }
 
-    public function showLoginPage()
+    public function create()
     {
         return view('auth.login');
     }
 
-    public function loginUser(LoginRequest $request)
+    public function store(LoginRequest $request)
     {
         try 
         {

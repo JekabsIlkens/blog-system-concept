@@ -5,7 +5,7 @@
             <x-auth-header header="Sign up for a new account" />
                       
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                <form class="space-y-6" action="{{ route('register.post') }}" method="POST">
+                <form class="space-y-6" action="{{ route('register') }}" method="POST">
                     @csrf
                     <div>
                         <x-input-label for="full_name" value="Full name" />

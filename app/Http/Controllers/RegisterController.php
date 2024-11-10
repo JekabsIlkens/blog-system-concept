@@ -15,12 +15,12 @@ class RegisterController
         $this->registerService = $registerService;
     }
 
-    public function showRegistrationPage()
+    public function create()
     {
         return view('auth.register');
     }
 
-    public function registerUser(RegisterRequest $request)
+    public function store(RegisterRequest $request)
     {
         try 
         {

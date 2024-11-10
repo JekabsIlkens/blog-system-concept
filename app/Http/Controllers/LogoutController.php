@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Auth;
 
 class LogoutController
 {
-    public function logoutUser()
+    public function destroy()
     {
         Auth::logout(); 
         

@@ -5,7 +5,7 @@
             <x-auth-header header="Sign in to your account" />
                       
             <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-                <form class="space-y-6" action="{{ route('login.post') }}" method="POST">
+                <form class="space-y-6" action="{{ route('login') }}" method="POST">
                     @csrf
                     <div>
                         <x-input-label for="email" value="Email" />
@@ -30,7 +30,7 @@
                 </form>
                       
                 <div class="mt-4 text-center">
-                    <x-nav-link href="{{ route('posts.index') }}" class="rounded-md text-amber-600 hover:text-amber-500">
+                    <x-nav-link href="{{ route('register') }}" class="rounded-md text-amber-600 hover:text-amber-500">
                         Create a new account
                     </x-nav-link>
                 </div>

@@ -2,11 +2,10 @@
 
 namespace App\Http\Services;
 
-use App\Http\Interfaces\LoginServiceInterface;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
-class LoginService implements LoginServiceInterface
+class LoginService
 {
     public function authenticateUser(array $data): void
     {

@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegisterRequest;
-use App\Http\Interfaces\RegisterServiceInterface;
+use App\Http\Services\RegisterService;
 use Exception;
 
 class RegisterController
 {
     protected $registerService;
 
-    public function __construct(RegisterServiceInterface $registerService)
+    public function __construct(RegisterService $registerService)
     {
         $this->registerService = $registerService;
     }

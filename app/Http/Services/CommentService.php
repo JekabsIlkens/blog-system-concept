@@ -2,12 +2,11 @@
 
 namespace App\Http\Services;
 
-use App\Http\Interfaces\CommentServiceInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Comment;
 
-class CommentService implements CommentServiceInterface
+class CommentService
 {
     public function getPostComments($id): Collection
     {

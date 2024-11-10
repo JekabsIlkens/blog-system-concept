@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
-use App\Http\Interfaces\LoginServiceInterface;
+use App\Http\Services\LoginService;
 use Illuminate\Validation\ValidationException;
 
 class LoginController
 {
     protected $loginService;
 
-    public function __construct(LoginServiceInterface $loginService)
+    public function __construct(LoginService $loginService)
     {
         $this->loginService = $loginService;
     }

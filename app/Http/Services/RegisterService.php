@@ -2,11 +2,10 @@
 
 namespace App\Http\Services;
 
-use App\Http\Interfaces\RegisterServiceInterface;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class RegisterService implements RegisterServiceInterface
+class RegisterService
 {
     public function createUser(array $data): void
     {

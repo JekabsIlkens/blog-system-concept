@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Interfaces\CommentServiceInterface;
+use App\Http\Services\CommentService;
 use App\Http\Requests\CommentRequest;
 use Exception;
 
@@ -10,7 +10,7 @@ class CommentsController
 {
     protected $commentsService;
 
-    public function __construct(CommentServiceInterface $commentsService)
+    public function __construct(CommentService $commentsService)
     {
         $this->commentsService = $commentsService;
     }

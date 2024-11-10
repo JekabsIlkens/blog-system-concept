@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Interfaces\PostsServiceInterface;
-use App\Http\Interfaces\CommentServiceInterface;
-use App\Http\Interfaces\CategoryServiceInterface;
+use App\Http\Services\PostsService;
+use App\Http\Services\CommentService;
+use App\Http\Services\CategoryService;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\SearchRequest;
 use Exception;
@@ -15,7 +15,7 @@ class PostsController
     protected $commentsService;
     protected $categoryService;
 
-    public function __construct(PostsServiceInterface $postsService, CommentServiceInterface $commentsService, CategoryServiceInterface $categoryService)
+    public function __construct(PostsService $postsService, CommentService $commentsService, CategoryService $categoryService)
     {
         $this->postsService = $postsService;
         $this->commentsService = $commentsService;

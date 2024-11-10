@@ -30,7 +30,7 @@ class PostController
         $data['author_id'] = Auth::id();
 
         $post = Post::create($data);
-        $post->categories()->attach($request->input('categories'));
+        $post->categories()->sync($request->input('categories'));
 
         return redirect()->route('posts.index');
     }
@@ -78,8 +78,8 @@ class PostController
         $query = $request->validated()['query'];
 
         $searchResults = Post::with('author')
-            ->where('title', 'LIKE', "%{$query}%")
-            ->orWhere('body', 'LIKE', "%{$query}%")
+            ->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($query) . '%'])
+            ->orWhereRaw('LOWER(body) LIKE ?', ['%' . strtolower($query) . '%'])
             ->get();
 
         return view('posts.search', ['posts' => $searchResults]);

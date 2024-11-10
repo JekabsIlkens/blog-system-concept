@@ -1,64 +1,52 @@
 <x-app-layout>
-    <div class="bg-white py-24 sm:py-32">
+    <div class="py-6">
         <div class="mx-auto max-w-7xl px-6 lg:px-8">
-            <div class="group relative flex items-center mx-4 my-4">
-                <img src="https://i.postimg.cc/bNnmBR2n/logo.png" alt="Blog Logo" class="h-12 w-12 rounded-full mr-4">
-                <h2 class="text-pretty text-4xl font-semibold tracking-tight text-neutral-900 sm:text-5xl">
-                    Edit your blog post
-                </h2>
+
+            <div class="group relative flex items-center px-4 py-4 bg-white shadow-md rounded-md">
+                <x-page-header header="Edit your blog post" />
             </div>
 
-            <div class="group relative flex items-center mx-4 my-4 border-t border-neutral-200">
-                <form action="{{ route('posts.edit.put', ['id' => $post->id]) }}" method="POST" class="w-full mt-4 px-4 py-4 border-solid border-0 border-neutral-200 rounded-md bg-neutral-100">
+            <div class="group relative flex items-center">
+                <form action="{{ route('posts.edit.put', ['id' => $post->id]) }}" method="POST" class="w-full mt-4 px-4 py-4 bg-white shadow-md rounded-md">
                     @csrf
                     @method('PUT')
                     <div>
-                        <label for="title" class="block text-sm/6 font-medium text-neutral-900">Title</label>
-                        <div class="mt-2">
-                            <input id="title" name="title" type="text" value="{{ $post->title }}" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6">
-                        </div>
-                        @error('title')
-                            <div class="block text-sm/6 font-medium text-amber-600">{{ $message }}</div>
-                        @enderror
+                        <x-input-label for="title" value="Title" />
+                        <x-input-field id="title" name="title" type="text" value="{{ $post->title }}" />
+
+                        <x-input-error for="title" />
                     </div>
                           
-                    <div>
-                        <div class="flex items-center justify-between mt-4">
-                            <label for="body" class="block text-sm/6 font-medium text-neutral-900">Content</label>
-                        </div>
-                        <div class="mt-2">
-                            <textarea id="body" name="body" type="text" class="block w-full rounded-md border-0 px-1.5 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 focus:ring-2 focus:ring-inset focus:ring-amber-600 sm:text-sm/6">{{ $post->body }}</textarea>
-                        </div>
-                        @error('body')
-                            <div class="block text-sm/6 font-medium text-amber-600">{{ $message }}</div>
-                        @enderror
-                        @if ($errors->has('error'))
-                            <div class="block text-sm/6 font-medium text-amber-600">{{ $errors->first('error') }}</div>
-                        @endif
+                    <div class="mt-4">
+                        <x-input-label for="body" value="Body" />
+                        <x-input-area id="body" name="body" type="text">{{ $post->body }}</x-input-area>
+
+                        <x-input-error for="body" />
+                        <x-server-error for="error" />
                     </div>
 
-                    <div>
-                        <div class="flex items-center justify-between mt-4">
-                            <label for="categories" class="block text-sm font-medium text-neutral-900">Categories</label>
-                        </div>
+                    <div class="mt-2">
+                        <x-input-label for="categories" value="Categories" />
+
                         <div class="mt-2 h-48 overflow-auto border border-neutral-300 rounded-md p-2">
                             @foreach($categories as $category)
                                 <div class="flex items-center mb-2">
-                                    <input id="category_{{ $category->id }}" name="categories[]" type="checkbox" value="{{ $category->id }}" class="mr-2 rounded border-neutral-600 checked:bg-amber-600 checked:border-amber-600 hover:bg-neutral-200" 
-                                        @if($activeCategories->contains($category->id)) checked @endif>
-                                    <label for="category_{{ $category->id }}" class="text-sm font-medium text-neutral-900">{{ $category->name }}</label>
+                                    <input id="category_{{ $category->id }}" name="categories[]" type="checkbox" value="{{ $category->id }}" 
+                                    class="mr-2 rounded border-neutral-600 checked:bg-amber-600 checked:border-amber-600 hover:bg-neutral-100" 
+                                    @if($activeCategories->contains($category->id)) checked @endif>
+
+                                    <x-input-label for="category_{{ $category->id }}" value="{{ $category->name }}" />
                                 </div>
                             @endforeach
                         </div>
-                    </div>                        
-                          
+                    </div>
+                        
                     <div class="group relative flex items-center mt-4">
-                        <a href="{{ url()->previous() }}" class="mr-4 rounded-md bg-neutral-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-600"> 
-                            Cancel 
-                        </a>
-                        <button type="submit" class="rounded-md bg-amber-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-amber-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-600">
-                            Save
-                        </button>
+                        <x-nav-link href="{{ url()->previous() }}" class="mr-4 rounded-md shadow-md text-white bg-neutral-600 hover:bg-neutral-500">
+                            Cancel
+                        </x-nav-link>
+
+                        <x-primary-button>Save</x-primary-button>
                     </div>
                 </form>
             </div>

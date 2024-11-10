@@ -30,7 +30,7 @@
                 </form>
                       
                 <div class="mt-4 text-center">
-                    <x-nav-link href="{{ route('posts.index') }}" class="text-amber-600 hover:text-amber-500">
+                    <x-nav-link href="{{ route('posts.index') }}" class="rounded-md text-amber-600 hover:text-amber-500">
                         Create a new account
                     </x-nav-link>
                 </div>

@@ -15,7 +15,7 @@
 
                     <div class="mt-10 flex items-center justify-center gap-x-6">
 
-                        <x-nav-link href="{{ route('posts.index') }}" class="shadow-md text-white bg-amber-600 hover:bg-amber-500">
+                        <x-nav-link href="{{ route('posts.index') }}" class="rounded-md shadow-md text-white bg-amber-600 hover:bg-amber-500">
                             Discover new ideas
                         </x-nav-link>
                         

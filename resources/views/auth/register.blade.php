@@ -37,7 +37,7 @@
                 </form>
                       
                 <div class="mt-4 text-center">
-                    <x-nav-link href="{{ route('login') }}" class="text-amber-600 hover:text-amber-500">
+                    <x-nav-link href="{{ route('login') }}" class="rounded-md text-amber-600 hover:text-amber-500">
                         Access an existing account
                     </x-nav-link>
                 </div>

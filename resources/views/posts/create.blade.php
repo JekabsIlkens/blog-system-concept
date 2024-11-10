@@ -7,7 +7,7 @@
             </div>
 
             <div class="group relative flex items-center">
-                <form action="{{ route('posts.create.post') }}" method="POST" class="w-full mt-4 px-4 py-4 bg-white shadow-md rounded-md">
+                <form action="{{ route('posts.store') }}" method="POST" class="w-full mt-4 px-4 py-4 bg-white shadow-md rounded-md">
                     @csrf
                     <div>
                         <x-input-label for="title" value="Title" />

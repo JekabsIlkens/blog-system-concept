@@ -28,7 +28,7 @@
                                 Edit
                             </x-nav-link>
 
-                            <form action="{{ route('posts.delete', ['id' => $post->id]) }}" method="POST" class="inline-flex">
+                            <form action="{{ route('posts.destroy', ['id' => $post->id]) }}" method="POST" class="inline-flex">
                                 @csrf
                                 @method('DELETE')
                                 <x-danger-button class="ml-4">Delete</x-danger-button>

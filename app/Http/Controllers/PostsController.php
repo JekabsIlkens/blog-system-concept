@@ -22,13 +22,6 @@ class PostsController
         $this->categoryService = $categoryService;
     }
 
-    public function showAllPostsPage()
-    {
-        $allPosts = $this->postsService->getAllPosts();
-
-        return view('posts.index', ['posts' => $allPosts]);
-    }
-
     public function searchForPosts(SearchRequest $request)
     {
         $searchResults = $this->postsService->searchForPosts($request->validated());
@@ -36,23 +29,30 @@ class PostsController
         return view('posts.search', ['posts' => $searchResults]);
     }
 
-    public function showSinglePostPage($id)
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
-        $singlePost = $this->postsService->getSinglePost($id);
-        $postComments = $this->commentsService->getPostComments($id);
-        $postCategories = $this->categoryService->getPostCategories($id);
+        $allPosts = $this->postsService->getAllPosts();
 
-        return view('posts.show', ['post' => $singlePost, 'comments' => $postComments, 'categories' => $postCategories]);
+        return view('posts.index', ['posts' => $allPosts]);
     }
 
-    public function showCreatePostPage()
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
         $allCategories = $this->categoryService->getAllCategories();
 
         return view('posts.create', ['categories' => $allCategories]);
     }
 
-    public function createPost(PostRequest $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(PostRequest $request)
     {
         try 
         {
@@ -66,7 +66,22 @@ class PostsController
         }
     }
 
-    public function showEditPostPage($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        $singlePost = $this->postsService->getSinglePost($id);
+        $postComments = $this->commentsService->getPostComments($id);
+        $postCategories = $this->categoryService->getPostCategories($id);
+
+        return view('posts.show', ['post' => $singlePost, 'comments' => $postComments, 'categories' => $postCategories]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
     {
         $targetPost = $this->postsService->getSinglePost($id);
         $allCategories = $this->categoryService->getAllCategories();
@@ -75,7 +90,10 @@ class PostsController
         return view('posts.edit', ['post' => $targetPost, 'categories' => $allCategories, 'activeCategories' => $postCategories]);
     }
 
-    public function editPost($id, PostRequest $request)
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(string $id, PostRequest $request)
     {
         try 
         {
@@ -89,7 +107,10 @@ class PostsController
         }
     }
 
-    public function deletePost($id)
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
     {
         $this->postsService->deletePost($id);
         

@@ -32,9 +32,9 @@ class CommentControllerTest extends TestCase
             'post_id' => $this->post->id,
         ];
 
-        $response = $this->post(route('posts.comment.post', $this->post->id), $commentData);
+        $response = $this->post(route('comments.store', $this->post), $commentData);
 
-        $response->assertRedirect(route('posts.show', $this->post->id));
+        $response->assertRedirect(route('posts.show', $this->post));
         $this->assertDatabaseHas('comments', $commentData);
     }
 
@@ -43,7 +43,7 @@ class CommentControllerTest extends TestCase
         $comment = Comment::factory()->create(['user_id' => $this->user->id, 'post_id' => $this->post->id]);
 
         $this->actingAs($this->user);
-        $response = $this->delete(route('posts.comment.delete', $comment->id));
+        $response = $this->delete(route('comments.destroy', $comment));
 
         $response->assertRedirect(url()->previous());
         $this->assertDatabaseMissing('comments', ['id' => $comment->id]);

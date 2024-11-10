@@ -31,7 +31,7 @@ class PostControllerTest extends TestCase
     {
         $post = Post::factory()->create();
 
-        $response = $this->get(route('posts.show', $post->id));
+        $response = $this->get(route('posts.show', $post));
         
         $response->assertStatus(200);
         $response->assertSee($post->title);
@@ -42,7 +42,7 @@ class PostControllerTest extends TestCase
         $this->actingAs($this->user);
         $postData = ['title' => 'Test title', 'body' => 'Blog post test body.'];
 
-        $response = $this->post(route('posts.create.post'), $postData);
+        $response = $this->post(route('posts.store'), $postData);
 
         $response->assertRedirect(route('posts.index'));
         $this->assertDatabaseHas('posts', $postData);
@@ -53,12 +53,12 @@ class PostControllerTest extends TestCase
         $post = Post::factory()->create(['author_id' => $this->user->id]);
 
         $this->actingAs($this->user);
-        $response = $this->put(route('posts.edit.put', $post->id), [
+        $response = $this->put(route('posts.update', $post), [
             'title' => 'Updated Title',
             'body' => 'Updated body content.'
         ]);
 
-        $response->assertRedirect(route('posts.show', $post->id));
+        $response->assertRedirect(route('posts.show', $post));
         $this->assertDatabaseHas('posts', [
             'id' => $post->id,
             'title' => 'Updated Title',
@@ -70,7 +70,7 @@ class PostControllerTest extends TestCase
         $post = Post::factory()->create(['author_id' => $this->user->id]);
 
         $this->actingAs($this->user);
-        $response = $this->delete(route('posts.delete', $post->id));
+        $response = $this->delete(route('posts.destroy', $post));
 
         $response->assertRedirect(route('posts.index'));
         $this->assertDatabaseMissing('posts', ['id' => $post->id]);

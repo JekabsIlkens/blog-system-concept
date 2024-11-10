@@ -20,7 +20,7 @@ class LoginControllerTest extends TestCase
             'password' => Hash::make($password = 'Password123!'),
         ]);
 
-        $response = $this->post(route('login.post'), [
+        $response = $this->post(route('login'), [
             'email' => $user->email,
             'password' => $password,
         ]);
@@ -32,7 +32,7 @@ class LoginControllerTest extends TestCase
 
     public function test_fails_with_unregistered_email()
     {
-        $response = $this->post(route('login.post'), [
+        $response = $this->post(route('login'), [
             'email' => 'unknown@mail.com',
             'password' => 'Password321!',
         ]);
@@ -47,7 +47,7 @@ class LoginControllerTest extends TestCase
             'password' => bcrypt('Password123!'),
         ]);
 
-        $response = $this->post(route('login.post'), [
+        $response = $this->post(route('login'), [
             'email' => $user->email,
             'password' => 'Password321!',
         ]);
@@ -58,7 +58,7 @@ class LoginControllerTest extends TestCase
 
     public function test_requires_an_email()
     {
-        $response = $this->post(route('login.post'), [
+        $response = $this->post(route('login'), [
             'password' => 'Password123!',
         ]);
 
@@ -67,7 +67,7 @@ class LoginControllerTest extends TestCase
 
     public function test_requires_a_password()
     {
-        $response = $this->post(route('login.post'), [
+        $response = $this->post(route('login'), [
             'email' => 'tyson.mike@mail.com',
         ]);
 

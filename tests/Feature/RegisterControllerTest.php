@@ -11,7 +11,7 @@ class RegisterControllerTest extends TestCase
 
     public function test_registers_user_successfully()
     {
-        $response = $this->post(route('register.post'), [
+        $response = $this->post(route('register'), [
             'full_name' => 'Mike Tyson',
             'email' => 'tyson.mike@mail.com',
             'password' => 'Password123!',
@@ -23,7 +23,7 @@ class RegisterControllerTest extends TestCase
 
     public function test_requires_valid_email()
     {
-        $response = $this->post(route('register.post'), [
+        $response = $this->post(route('register'), [
             'full_name' => 'Mike Tyson',
             'email' => 'tyson#mail',
             'password' => 'Password123!',
@@ -34,7 +34,7 @@ class RegisterControllerTest extends TestCase
 
     public function test_requires_valid_password()
     {
-        $response = $this->post(route('register.post'), [
+        $response = $this->post(route('register'), [
             'full_name' => 'Mike Tyson',
             'email' => 'tyson.mike@mail.com',
             'password' => 'mike1',

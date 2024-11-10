@@ -1,6 +1,6 @@
 @props(['author', 'date'])
 
-<div class="text-sm/6">
+<div class="text-sm">
     <p class="font-semibold text-amber-600">
         Author: 
         <span class="font-normal text-neutral-600">

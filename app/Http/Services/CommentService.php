@@ -8,7 +8,7 @@ use App\Models\Comment;
 
 class CommentService
 {
-    public function getPostComments($id): Collection
+    public function getCommentsByPostId($id): Collection
     {
         return Comment::where('post_id', $id)
             ->with('user:id,full_name')

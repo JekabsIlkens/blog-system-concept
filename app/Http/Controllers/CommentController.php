@@ -6,7 +6,7 @@ use App\Http\Services\CommentService;
 use App\Http\Requests\CommentRequest;
 use Exception;
 
-class CommentsController
+class CommentController
 {
     protected $commentsService;
 

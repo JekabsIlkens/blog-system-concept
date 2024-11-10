@@ -15,7 +15,7 @@ class PostsService
                     ->get();
     }
 
-    public function getSinglePost($id): Post
+    public function getPostById($id): Post
     {
         return Post::with('author')->find($id);
     }
@@ -37,7 +37,7 @@ class PostsService
         return Post::create($data);
     }
 
-    public function editPost($id, array $data): Post
+    public function updatePost($id, array $data): Post
     {
         $post = Post::findOrFail($id);
 

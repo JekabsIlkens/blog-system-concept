@@ -13,7 +13,7 @@ class CategoryService
         return Category::all();
     }
 
-    public function getPostCategories($id): Collection
+    public function getCategoriesByPostId($id): Collection
     {
         $post = Post::findOrFail($id);
 

@@ -26,7 +26,6 @@
                         <x-input-field id="password" name="password" type="password" value="{{ old('password') }}" />
 
                         <x-input-error for="password" />
-                        <x-server-error for="error" />
                     </div>
                       
                     <div>

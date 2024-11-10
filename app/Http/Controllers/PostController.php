@@ -9,7 +9,7 @@ use App\Http\Requests\PostRequest;
 use App\Http\Requests\SearchRequest;
 use Exception;
 
-class PostsController
+class PostController
 {
     protected $postsService;
     protected $commentsService;
@@ -59,18 +59,18 @@ class PostsController
 
     public function show(string $id)
     {
-        $singlePost = $this->postsService->getSinglePost($id);
-        $postComments = $this->commentsService->getPostComments($id);
-        $postCategories = $this->categoryService->getPostCategories($id);
+        $singlePost = $this->postsService->getPostById($id);
+        $postComments = $this->commentsService->getCommentsByPostId($id);
+        $postCategories = $this->categoryService->getCategoriesByPostId($id);
 
         return view('posts.show', ['post' => $singlePost, 'comments' => $postComments, 'categories' => $postCategories]);
     }
 
     public function edit(string $id)
     {
-        $targetPost = $this->postsService->getSinglePost($id);
+        $targetPost = $this->postsService->getPostById($id);
         $allCategories = $this->categoryService->getAllCategories();
-        $postCategories = $this->categoryService->getPostCategories($id);
+        $postCategories = $this->categoryService->getCategoriesByPostId($id);
 
         return view('posts.edit', ['post' => $targetPost, 'categories' => $allCategories, 'activeCategories' => $postCategories]);
     }
@@ -79,7 +79,7 @@ class PostsController
     {
         try 
         {
-            $post = $this->postsService->editPost($id, $request->validated());
+            $post = $this->postsService->updatePost($id, $request->validated());
             $post->categories()->sync($request->input('categories'));
             return redirect()->route('posts.show', $id);
         } 

@@ -77,7 +77,7 @@ You will need to manually re-seed it with `php artisan db:seed`.
 <img src='https://i.postimg.cc/ht0YtsMd/1.png' alt='page-landing' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/Hn5ZD9Vj/2.png' alt='page-register' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/jSR8mNKd/3.png' alt='page-login' width="1200px"/> <br/>
-<img src='https://i.postimg.cc/Y013y2sW/4.png' alt='page-discover' width="1200px"/> <br/>
+<img src='https://i.postimg.cc/mrShVPR9/4.png' alt='page-discover' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/c4h7Kzy0/5.png' alt='page-search' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/JzgkZVTV/6.png' alt='page-write' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/ryJRgth9/7.png' alt='page-own-post' width="1200px"/> <br/>

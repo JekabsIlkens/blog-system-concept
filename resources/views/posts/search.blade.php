@@ -46,6 +46,10 @@
                     </h3>  
                 @endif
             </div>
+
+            <div class="mt-8">
+                {{ $posts->links() }}
+            </div>
         </div>
     </div>     
 </x-app-layout>

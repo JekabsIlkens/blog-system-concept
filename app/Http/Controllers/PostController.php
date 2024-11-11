@@ -12,7 +12,9 @@ class PostController
 {
     public function index()
     {
-        $allPosts = Post::with('author')->get();
+        $allPosts = Post::with('author')
+            ->orderBy('created_at', 'desc')
+            ->paginate(6);
 
         return view('posts.index', ['posts' => $allPosts]);
     }
@@ -80,7 +82,8 @@ class PostController
         $searchResults = Post::with('author')
             ->whereRaw('LOWER(title) LIKE ?', ['%' . strtolower($query) . '%'])
             ->orWhereRaw('LOWER(body) LIKE ?', ['%' . strtolower($query) . '%'])
-            ->get();
+            ->orderBy('created_at', 'desc')
+            ->paginate(6);
 
         return view('posts.search', ['posts' => $searchResults]);
     }

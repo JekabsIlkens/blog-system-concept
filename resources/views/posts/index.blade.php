@@ -35,7 +35,7 @@
                                     Read
                                 </x-nav-link>
 
-                                <x-post-footer :author="$post->author_name" :date="$post->created_at->format('F j, Y, g:i a')" />
+                                <x-post-footer :author="$post->author->full_name" :date="$post->created_at->format('F j, Y, g:i a')" />
                             </div>
 
                         </article>

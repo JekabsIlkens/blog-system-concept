@@ -1,4 +1,7 @@
-# Simple Blog System Concept - Laravel v11.30.0
+<h1>
+    <img align="left" alt="CIS-LOGO" width="40px" src="https://i.postimg.cc/bNnmBR2n/logo.png"/>
+    Blog System Concept - Laravel v11.30.0
+</h1>
 
 ### Ensure you have the following installed:
 - PHP (version 8.2 or later)
@@ -74,11 +77,11 @@ You will need to manually re-seed it with `php artisan db:seed`.
 
 ## App showcase:
 
-<img src='https://i.postimg.cc/ht0YtsMd/1.png' alt='page-landing' width="1200px"/> <br/>
+<img src='https://i.postimg.cc/xddWb0sS/1.png' alt='page-landing' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/Hn5ZD9Vj/2.png' alt='page-register' width="1200px"/> <br/>
 <img src='https://i.postimg.cc/jSR8mNKd/3.png' alt='page-login' width="1200px"/> <br/>
-<img src='https://i.postimg.cc/mrShVPR9/4.png' alt='page-discover' width="1200px"/> <br/>
-<img src='https://i.postimg.cc/c4h7Kzy0/5.png' alt='page-search' width="1200px"/> <br/>
-<img src='https://i.postimg.cc/JzgkZVTV/6.png' alt='page-write' width="1200px"/> <br/>
-<img src='https://i.postimg.cc/ryJRgth9/7.png' alt='page-own-post' width="1200px"/> <br/>
-<img src='https://i.postimg.cc/vZp4D7BG/8.png' alt='page-other-post-comment' width="1200px"/> <br/>
+<img src='https://i.postimg.cc/mr6KY0q1/4.png' alt='page-discover' width="1200px"/> <br/>
+<img src='https://i.postimg.cc/3Rs6623K/5.png' alt='page-search' width="1200px"/> <br/>
+<img src='https://i.postimg.cc/Fz0qQ1K0/6.png' alt='page-write' width="1200px"/> <br/>
+<img src='https://i.postimg.cc/HWMFMvtj/7.png' alt='page-own-post' width="1200px"/> <br/>
+<img src='https://i.postimg.cc/7Yydn1B9/8.png' alt='page-other-post-comment' width="1200px"/> <br/>

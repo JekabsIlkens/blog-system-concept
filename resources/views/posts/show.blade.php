@@ -22,6 +22,11 @@
                         <x-post-footer :author="$post->author->full_name" :date="$post->created_at->format('F j, Y, g:i a')" />
                     </div>
 
+                    <div class="relative flex items-center mx-4 my-4">
+                        <img class="h-5 w-5" src="https://i.postimg.cc/VLTLDVCM/view.png">
+                        <p class="ml-1 mr-2 text-sm font-semibold text-neutral-600">{{ $post->views }}</p>
+                    </div>
+
                     <div class="relative flex items-center mx-4 my-4 pb-4">
                         @if(Auth::id() === $post->author->id)
                             <x-nav-link href="{{ route('posts.edit', $post) }}" class="rounded-md shadow-md text-white bg-amber-600 hover:bg-amber-500">

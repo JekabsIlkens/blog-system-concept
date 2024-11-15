@@ -31,6 +31,9 @@
                             </p>
 
                             <div class="relative flex items-center mx-4 my-4">
+                                <img class="h-5 w-5" src="https://i.postimg.cc/VLTLDVCM/view.png">
+                                <p class="ml-1 mr-2 text-sm font-semibold text-neutral-600">{{ $post->views }}</p>
+
                                 <x-nav-link href="{{ route('posts.show', $post) }}" class="mr-2 rounded-md shadow-md text-white bg-amber-600 hover:bg-amber-500">
                                     Read
                                 </x-nav-link>

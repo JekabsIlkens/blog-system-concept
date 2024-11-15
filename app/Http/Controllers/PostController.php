@@ -39,6 +39,7 @@ class PostController
 
     public function show(Post $post)
     {
+        $post->update(['views' => $post->views + 1]);
         $post->load('comments', 'categories');
 
         return view('posts.show', [

@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('body');
-            $table->integer('views');
+            $table->integer('views')->default(0);
             $table->timestamps();
             $table->foreignId('author_id')->constrained('users')->onDelete('cascade');
         });
